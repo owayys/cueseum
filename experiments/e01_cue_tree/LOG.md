@@ -13,3 +13,6 @@
 - Normalized problem texts are unique in the source and in the 420, so no duplicate can land in both CV folds.
 - Pilot: 1 per cell (seed 0) drawn from the 420 → 35.
 - Output is deterministic: two runs give identical sha256 (`tree_problems.jsonl` 426f7785…, `tree_problems_pilot.jsonl` e1c40a7b…).
+
+## Upstream fork (2026-10-17, before any GPU run)
+- Submodule now points at `owayys/cues` @ `339de49`, one commit on top of `cd9caab`: `enforce_eager=False` in `cues/evaluate.py` (CUDA graphs on, for throughput). Approved by the user. Sampling settings are unchanged; rollouts are not token-identical to upstream's. All GPU phases use this commit.
