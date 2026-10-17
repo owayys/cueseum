@@ -8,7 +8,7 @@ def test_runs(monkeypatch, tmp_path):
 
 def test_commits():
     assert len(paths.commit()) == 40
-    assert paths.upstream_commit() == "cd9caabe748307df0565502f630e3a834a9f998d"
+    assert paths.upstream_commit() == "339de4922c063d2b33271f999a28042183bb0e89"
 
 
 def test_experiment_dir():
