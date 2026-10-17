@@ -50,3 +50,23 @@
 - Spend at 09:30Z: $0.60 (balance $49.40).
 
 ## Phase 4: full run (started 09:30:21Z)
+- Analysis definitions fixed at ~09:50Z, while the full run was in progress and before any full-run results were read (`analysis/analyze.py`):
+  - Cue order: `none` first, then `tree_cues.json` order (upstream's eval order). Every argmax/argmin tie goes to the lowest index.
+  - `none` is a candidate in accuracy selection (5a–5c). In label-free selection (5e) it is never a candidate and serves only as the guard reference, matching upstream `decide`.
+  - Informative problem: anything except all 24 cues at 0/8 or all at 8/8. A problem with a mix of 0/8 and 8/8 cues counts as informative.
+  - Entropy: log2, with no-answer as its own `NONE` symbol, per (cue, problem). Groups use the mean over problems. Guard: a cue's mean no-answer share must be ≤ none's + 0.10 on the same problems, and if no cue passes, `none` is used. This matches `cues.agree`, except ties break by cue order instead of slug.
+  - 5a: per-problem and global selection on rollouts 0–3, scored on 4–7. Bootstrap (2,000, seed 0) over problems for held-out per-problem, global, and their paired difference. In-sample difference (0–3 vs 0–3) is labeled. The tie rate is the share of problems whose rollouts 0–3 accuracy maximum is shared by more than one cue.
+  - 5b: 2-fold CV within groups, 50 repeats, seed 0, all 8 rollouts. Each level reports the held-out mean with CI and the **paired** per-problem difference vs a global cue CV'd on the same problems with the same seed. Groups with fewer than 2 problems (possible only in the informative subset) are dropped from that level, and so is its global baseline.
+  - 5c: 200 label shuffles (sizes preserved), each run through the same CV. One-sided p = (1 + #null ≥ observed) / 201.
+  - 5d: informative problems. Profile = accuracy minus the problem's mean across cues. Constant profiles are dropped and counted. Average linkage, correlation distance, cut at k = 5 and 7. ARI/NMI against subject, level and answer type. Stability: ARI between clusterings from rollouts 0–3 and 4–7 on problems non-constant in both.
+  - Answer type from `gt`: `integer` = `-?\d+`. `fraction` = `\frac{a}{b}`, `\dfrac`, or `a/b` with integers. `expression` = contains letters or a backslash, but no `\text`, comma, parenthesis or bracket. `other` = everything else (decimals, tuples, intervals, text).
+  - 5f: heatmaps of rollouts 4–7 accuracy by subject and by subject × level. Winners use all 8 rollouts. Winner change vs parent: subject → global, level → global, subject × level → subject.
+  - Decision (on all problems):
+    - **H1 supported** if subject or level has a paired diff CI lower bound > 0, p < 0.05, and the 5a diff CI lower bound > 0.
+    - **Partial** if only 5a passes.
+    - **Not supported** if 5a fails and no level has a CI lower bound > 0.
+    - Anything else is left to REPORT.md. "Inconclusive" is a judgment call there, with a sample-size estimate.
+- Analysis checks, run before any full-run results were read:
+  - **Synthetic, planted subject effect (+0.3 for one cue per subject):** subject diff CI lower bound +0.241, p = 0.005 (the minimum possible). Level not detected (p = 0.886), correctly. 5e subject p = 0.005. Decision: "H1 supported".
+  - **Synthetic, no effect:** every level p ≥ 0.29, the 5a diff CI spans 0, 5e subject p = 0.856. Decision: "Not supported".
+  - **Real pilot data:** crash check only, with one problem per subject × level cell (that level is empty). I did see its printed numbers. They changed none of the definitions above, which were written before it ran.
