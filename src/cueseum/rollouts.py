@@ -15,10 +15,10 @@ def _key(args):
     return None if key is None else str(key)
 
 
-def answer_keys(items, timeout=10):
-    keys = []
+def answer_keys(items, timeout=10, max_timeout_share=0.01):
+    keys, stalled = [], 0
     while len(keys) < len(items):
-        pool = mp.get_context("spawn").Pool(1)
+        pool = mp.get_context("fork").Pool(1)
         jobs = pool.imap(_key, items[len(keys):])
         try:
             while len(keys) < len(items):
@@ -26,6 +26,9 @@ def answer_keys(items, timeout=10):
         except mp.TimeoutError:
             text, style = items[len(keys)]
             keys.append("timeout:" + extract(text[-2000:], style)[:80])
+            stalled += 1
+            if stalled > max(1, max_timeout_share * len(items)):
+                raise RuntimeError(f"{stalled} answer-key parses timed out")
         finally:
             pool.terminate()
     return keys

@@ -1,6 +1,7 @@
 import json
 
 import pandas as pd
+import pytest
 
 from cueseum import rollouts
 
@@ -37,3 +38,9 @@ def test_answer_keys_time_out_and_continue():
     keys = rollouts.answer_keys([(r"\boxed{3}", "boxed"), (stall, "boxed"), (r"\boxed{0.5}", "boxed")], timeout=3)
     assert keys[0] == "3.0" and keys[2] == "0.5"
     assert keys[1].startswith("timeout:2^{2008}")
+
+
+def test_answer_keys_raise_on_mass_timeouts():
+    stall = (r"\boxed{2^{2008} \left( \sum_{k=0}^{1004} \binom{2008}{2k} 3^{2008 - 2k} 5^k \right)}", "boxed")
+    with pytest.raises(RuntimeError):
+        rollouts.answer_keys([stall, stall], timeout=1)
