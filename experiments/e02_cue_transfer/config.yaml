@@ -1,0 +1,25 @@
+model: qwen4b
+model_hub: Qwen/Qwen3-4B-Base
+model_revision: 906bfd4b4dc7f14ee4320094d8b41684abff8539
+source_model: qwen14b
+source_model_hub: Qwen/Qwen3-14B-Base
+source_model_revision: 0b0bd3732e2c374d483664439ea334928b65f304
+prompt: boxed
+benchmark: math500
+cues: ["none", " To determine", " Alright,"]
+temperature: 0.6
+top_p: 0.95
+n_rollouts_per_batch: 16
+batches: 2
+max_new_tokens: 31744
+seed: 20260819
+grader: upstream math-verify, boxed
+runs: e02_cue_transfer
+budget_usd: 25
+gpu_hour_cap: 35
+gpu_memory_utilization: 0.95
+smoke: {problems: 5, n_rollouts: 2, max_new_tokens: 2048, cues: ["none", " Alright,"]}
+pilot: {problems: 50, n_rollouts: 4}
+truncation_budgets: [4096, 8192, 16384, 31744]
+bootstrap: 10000
+probe: {benchmark: math_train_probe, problems: 100, extra_cues: [" Alright,", " To determine", " To"], top_beam: 5}

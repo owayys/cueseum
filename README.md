@@ -17,3 +17,4 @@ export CUESEUM_RUNS=/path/to/runs HF_HOME=/path/to/hf RUNS=$CUESEUM_RUNS
 | id | question | status | report |
 |---|---|---|---|
 | e01 | Do optimal token cues form a tree over problem groups? | done: not supported | [REPORT](experiments/e01_cue_tree/REPORT.md) |
+| e02 | Do cues from a larger model transfer to a smaller sibling? | planned | [REPORT](experiments/e02_cue_transfer/REPORT.md) |
