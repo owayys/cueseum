@@ -40,3 +40,8 @@ def test_permutation_null():
 def test_grouped_cv_rejects_partial_groups():
     with pytest.raises(ValueError):
         stats.grouped_cv_select_score(TABLE, GROUPS[:10], stats.select_max(TABLE))
+
+
+def test_grouped_cv_groups_in_any_order():
+    out = stats.grouped_cv_select_score(TABLE, GROUPS[::-1], stats.select_max(TABLE), repeats=3)
+    assert out.to_numpy().mean() == 0.95

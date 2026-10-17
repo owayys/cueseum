@@ -10,22 +10,25 @@ def bootstrap_ci(values, n=2000, seed=0, alpha=0.05, stat=np.mean):
 
 
 def select_max(table):
-    return lambda keys: table.columns[np.argmax(table.loc[keys].mean().to_numpy())]
+    values, index = table.to_numpy(), table.index
+    return lambda keys: table.columns[np.argmax(values[index.get_indexer(keys)].mean(axis=0))]
 
 
 def grouped_cv_select_score(table, groups, select_fn, folds=2, repeats=50, seed=0):
     if set(groups.index) != set(table.index):
         raise ValueError("groups must cover exactly the table's problems")
     rng = np.random.default_rng(seed)
-    out = pd.DataFrame(np.nan, index=range(repeats), columns=table.index)
-    members = [np.asarray(keys) for keys in groups.groupby(groups).groups.values()]
+    values, keys, cols = table.to_numpy(), table.index.to_numpy(), {c: j for j, c in enumerate(table.columns)}
+    pos = table.index.get_indexer(groups.index)
+    members = [pos[m] for m in groups.groupby(groups.to_numpy()).indices.values()]
+    out = np.full((repeats, len(table)), np.nan)
     for r in range(repeats):
-        for keys in members:
-            parts = np.array_split(rng.permutation(keys), folds)
+        for m in members:
+            parts = np.array_split(rng.permutation(m), folds)
             for i, held in enumerate(parts):
-                cue = select_fn(np.concatenate(parts[:i] + parts[i + 1:]))
-                out.loc[r, held] = table.loc[held, cue].to_numpy()
-    return out
+                cue = select_fn(keys[np.concatenate(parts[:i] + parts[i + 1:])])
+                out[r, held] = values[held, cols[cue]]
+    return pd.DataFrame(out, columns=table.index)
 
 
 def permutation_null(table, groups, select_fn, n=200, seed=0, **cv):
