@@ -70,3 +70,12 @@
   - **Synthetic, planted subject effect (+0.3 for one cue per subject):** subject diff CI lower bound +0.241, p = 0.005 (the minimum possible). Level not detected (p = 0.886), correctly. 5e subject p = 0.005. Decision: "H1 supported".
   - **Synthetic, no effect:** every level p ≥ 0.29, the 5a diff CI spans 0, 5e subject p = 0.856. Decision: "Not supported".
   - **Real pilot data:** crash check only, with one problem per subject × level cell (that level is empty). I did see its printed numbers. They changed none of the definitions above, which were written before it ran.
+- 09:30:21–13:35:51Z (4.09 GPU-h), rc=0. The engine initialized in 47 s. Throughput rose from about 10 to about 15 min per cue for the long-output cues (` Alright,`, ` \n\nOkay`).
+- A background watcher rsynced finished cells here every 30 min. One pull at about 11:35Z failed with `No route to host` (a transient network drop); the run was unaffected and the next pull caught up.
+- Verified before deleting the pod: 80,640 records = 24 cues × 420 problems × 8, every (cue, problem) has exactly rollouts 0–7, and the problem set matches `tree_problems.jsonl`. `rsync -c --dry-run` showed the local copy byte-identical to the pod's.
+- Pod `u7wq77zgsgdq5m` deleted 13:37Z, with no network volumes or endpoints left. **Total spend: $3.65**, about 5.0 pod-hours (08:37–13:37Z) at $0.731/hr: setup 0.13 h, smoke 0.1 h, beam 0.03 h, pilot 0.51 h, full 4.09 h, plus idle gaps between phases.
+
+## Phase 5: analysis (2026-10-17, local CPU)
+- `load_cells` hung on one rollout (` First,`, `intermediate_algebra__5bb0c0`, r3). Its boxed answer, a sum of 1,005 binomial terms with 2^2008 powers, made upstream `answer_key`'s `float()` evaluate the expression without end. Fixed in `lib` (#11): keys are computed in a forked worker with a 10 s timeout per record. A stalled record gets `timeout:<extracted answer>`, and the call raises if more than 1% of records time out. Result: 1 timeout in 80,640. About an hour of local CPU was lost; no GPU cost.
+- A first full analysis ran from #11's branch commit. It was re-run from `main` (`ec6360c`) for provenance and written to `results/`. Runtime about 12 min.
+- `results/scores.parquet` comes from `load_cells` on `full/` (324 KB, committed).

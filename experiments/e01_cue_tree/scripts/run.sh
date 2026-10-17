@@ -18,3 +18,4 @@ python ../analysis/pilot_report.py "$R/pilot" 0.731 12
   --temperature "$(cfg temperature)" --top-p "$(cfg top_p)" --seed "$(cfg seed)" \
   --gpu-memory-utilization "$(cfg gpu_memory_utilization)" --out "$R/full"
 python ../analysis/analyze.py "$R/full" ../results
+python -c "import sys; from cueseum.rollouts import load_cells, save; save(load_cells(sys.argv[1]), '../results/scores.parquet')" "$R/full"

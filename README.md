@@ -16,4 +16,4 @@ export CUESEUM_RUNS=/path/to/runs HF_HOME=/path/to/hf RUNS=$CUESEUM_RUNS
 
 | id | question | status | report |
 |---|---|---|---|
-| e01 | Do optimal token cues form a tree over problem groups? | planned | [REPORT](experiments/e01_cue_tree/REPORT.md) |
+| e01 | Do optimal token cues form a tree over problem groups? | done: not supported | [REPORT](experiments/e01_cue_tree/REPORT.md) |
