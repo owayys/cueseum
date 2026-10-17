@@ -1,0 +1,7 @@
+runs/
+*.parquet
+!experiments/*/results/*.parquet
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
