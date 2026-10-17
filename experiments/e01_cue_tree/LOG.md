@@ -16,3 +16,8 @@
 
 ## Upstream fork (2026-10-17, before any GPU run)
 - Submodule now points at `owayys/cues` @ `339de49`, one commit on top of `cd9caab`: `enforce_eager=False` in `cues/evaluate.py` (CUDA graphs on, for throughput). Approved by the user. Sampling settings are unchanged; rollouts are not token-identical to upstream's. All GPU phases use this commit.
+
+## Persistence (2026-10-17)
+- Every GPU-phase command runs through `scripts/logged.sh <phase> <step> cmd…`, which appends its console output to `$CUESEUM_RUNS/e01_cue_tree/<phase>/logs/<step>.log`.
+- `scripts/snapshot.sh` records nvidia-smi, uname, installed packages, git state and selected env vars under `env/<UTC timestamp>/`. It never dumps the full env: pods inject `RUNPOD_API_KEY`.
+- `scripts/pull.sh <user@host> <port> [remote_runs]` rsyncs the pod's `e01_cue_tree/` into local `runs/` after every phase. It never deletes anything locally.
