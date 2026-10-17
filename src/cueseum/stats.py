@@ -14,6 +14,8 @@ def select_max(table):
 
 
 def grouped_cv_select_score(table, groups, select_fn, folds=2, repeats=50, seed=0):
+    if set(groups.index) != set(table.index):
+        raise ValueError("groups must cover exactly the table's problems")
     rng = np.random.default_rng(seed)
     out = pd.DataFrame(np.nan, index=range(repeats), columns=table.index)
     members = [np.asarray(keys) for keys in groups.groupby(groups).groups.values()]

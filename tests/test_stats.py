@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import pytest
 
 from cueseum import stats
 
@@ -34,3 +35,8 @@ def test_permutation_null():
     assert null.shape == (20,)
     assert stats.p_value(0.95, null) < 0.2
     assert stats.p_value(-1, null) == 1.0
+
+
+def test_grouped_cv_rejects_partial_groups():
+    with pytest.raises(ValueError):
+        stats.grouped_cv_select_score(TABLE, GROUPS[:10], stats.select_max(TABLE))
