@@ -1,11 +1,12 @@
 import json
-import multiprocessing as mp
 from pathlib import Path
 
 import pandas as pd
 from cues.agree import answer_key
 from cues.grading import extract
 from cues.prompts import GRADING
+
+from cueseum.parallel import timed_map
 
 COLUMNS = ["cue", "problem_key", "rollout_index", "correct", "committed", "hit_token_cap", "output_tokens", "answer_key"]
 
@@ -15,23 +16,13 @@ def _key(args):
     return None if key is None else str(key)
 
 
+def _timeout_key(item):
+    text, style = item
+    return "timeout:" + extract(text[-2000:], style)[:80]
+
+
 def answer_keys(items, timeout=10, max_timeout_share=0.01):
-    keys, stalled = [], 0
-    while len(keys) < len(items):
-        pool = mp.get_context("fork").Pool(1)
-        jobs = pool.imap(_key, items[len(keys):])
-        try:
-            while len(keys) < len(items):
-                keys.append(jobs.next(timeout))
-        except mp.TimeoutError:
-            text, style = items[len(keys)]
-            keys.append("timeout:" + extract(text[-2000:], style)[:80])
-            stalled += 1
-            if stalled > max(1, max_timeout_share * len(items)):
-                raise RuntimeError(f"{stalled} answer-key parses timed out")
-        finally:
-            pool.terminate()
-    return keys
+    return timed_map(_key, items, _timeout_key, timeout, max_timeout_share=max_timeout_share)
 
 
 def load_cells(root, timeout=10):
