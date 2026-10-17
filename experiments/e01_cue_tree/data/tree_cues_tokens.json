@@ -1,0 +1,176 @@
+{
+ "spTo-f30c92c1535cb8a7a19e4c081d9e05e3279547311774871655d50b13cce76593": {
+  "cue": " To",
+  "ids": [
+   2014
+  ],
+  "merges": false
+ },
+ "spWe-5446cbae2b98037d58c6806e98cf500192adf5507b7cdc2d1bcb25ccad4a5a80": {
+  "cue": " We",
+  "ids": [
+   1205
+  ],
+  "merges": false
+ },
+ "spLet-0f8c681764675a8672cd8e063c7d6214f5dc7feb1a6f521ebef525d24ef86eaa": {
+  "cue": " Let",
+  "ids": [
+   6771
+  ],
+  "merges": false
+ },
+ "spThe-2c16f3cac1d4fb2e478b7c16193cf258ace331e8290ff58596a503540bad790e": {
+  "cue": " The",
+  "ids": [
+   576
+  ],
+  "merges": false
+ },
+ "spTospfind-cf88986a0a1b72f8d55fc03d8a562a1493985a7c161288a0fe36db9d4facdb9e": {
+  "cue": " To find",
+  "ids": [
+   2014,
+   1477
+  ],
+  "merges": false
+ },
+ "spTospsolve-ce6ef9a7ed81db6ff70089d48a8c659441c5471440537d859a5712bf48f77125": {
+  "cue": " To solve",
+  "ids": [
+   2014,
+   11625
+  ],
+  "merges": false
+ },
+ "spLetapss-bada1c06c7f0bba397030302f62d34039d2597e752a55a630f6b18701adf0411": {
+  "cue": " Let's",
+  "ids": [
+   6771,
+   594
+  ],
+  "merges": false
+ },
+ "spFirst-ddd14a27afee0edcc7a29e85dd75542b482de7825cb7f00f484eca5fdd8cab3f": {
+  "cue": " First",
+  "ids": [
+   5512
+  ],
+  "merges": false
+ },
+ "spSince-bd3592646fbe5736a5b919c74d31dc120918063e03ca56f18489c2c96ebf3aaa": {
+  "cue": " Since",
+  "ids": [
+   8704
+  ],
+  "merges": false
+ },
+ "spWespcan-34bef4f6bdc4d4a2ce6c3d0b38dd829dd8bf6cf1a8e61f5438b2fefb7a93eda2": {
+  "cue": " We can",
+  "ids": [
+   1205,
+   646
+  ],
+  "merges": false
+ },
+ "spFirstc-664f8a337727b222959f882a8dcb5a985014094b0b77d93ed2dbc03c0f1cce67": {
+  "cue": " First,",
+  "ids": [
+   5512,
+   11
+  ],
+  "merges": false
+ },
+ "spLetspdollar-7455547305c51263a38f5036a37183e8336bc7a956f1778f5ced9274b73ab773": {
+  "cue": " Let $",
+  "ids": [
+   6771,
+   400
+  ],
+  "merges": false
+ },
+ "sp-36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068": {
+  "cue": " ",
+  "ids": [
+   220
+  ],
+  "merges": false
+ },
+ "spStep-4381fc315c497d4e2cd078605b97816ee96b321fb282b1e62df2f4080b5c994a": {
+  "cue": " Step",
+  "ids": [
+   14822
+  ],
+  "merges": false
+ },
+ "spStepsp-37cd9511bf7d88c88da5ce3cf24ca4b5bf6d136aa67e7b40e07a51eb61e4d7d5": {
+  "cue": " Step ",
+  "ids": [
+   14822,
+   220
+  ],
+  "merges": false
+ },
+ "spx-88586cb2b204a2a21c0b20a15ef136b5fe60bbc28e0e3409572046e31f3cceb3": {
+  "cue": " \\",
+  "ids": [
+   1124
+  ],
+  "merges": false
+ },
+ "spTospdetermine-a83b7b6c8e8f3a793f01dbe6618f107ff2063a4ae3dc1932fb768a7c8dba75c8": {
+  "cue": " To determine",
+  "ids": [
+   2014,
+   8253
+  ],
+  "merges": false
+ },
+ "spWesphave-031362f441c6c6497bbb12768f265d8d262cd36790c1ea70d6d38a0a2731392a": {
+  "cue": " We have",
+  "ids": [
+   1205,
+   614
+  ],
+  "merges": false
+ },
+ "spWespknow-505b264681bf6d26fb2f0458859dd3c7501d3ab47333f77364c78795fa574de8": {
+  "cue": " We know",
+  "ids": [
+   1205,
+   1414
+  ],
+  "merges": false
+ },
+ "spn1-e16f1596201850fd4a63680b27f603cb64e67176159be3d8ed78a4403fdb1700": {
+  "cue": " \n",
+  "ids": [
+   715
+  ],
+  "merges": false
+ },
+ "spOkayc-6b5d723e26f07a0091095ae1c6da2392a9ad8bfbf2a045ac132846898816f2bd": {
+  "cue": " Okay,",
+  "ids": [
+   35439,
+   11
+  ],
+  "merges": false
+ },
+ "spAlrightc-f5c341ea1bba0fa0cb81b77fd8bc00f3138be6b530134ca7f42ec0b4437c511c": {
+  "cue": " Alright,",
+  "ids": [
+   97593,
+   11
+  ],
+  "merges": false
+ },
+ "spn2Okay-549550be4f47222ea4ee4e259387e6d22203c69b837b3b36416fbbdad049e386": {
+  "cue": " \n\nOkay",
+  "ids": [
+   4710,
+   32313
+  ],
+  "merges": false
+ }
+}

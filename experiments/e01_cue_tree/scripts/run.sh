@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")"
+cfg() { python -c "import sys, yaml; print(yaml.safe_load(open('../config.yaml'))[sys.argv[1]])" "$1"; }
+R=$CUESEUM_RUNS/e01_cue_tree
+M=$(cfg model) P=$(cfg prompt)
 python build_problems.py
+./logged.sh smoke demo python -m cues demo --model "$M" --out "$R/smoke"
+./logged.sh search beam_only python -m cues search --model "$M" --prompt "$P" --beam-only --out "$R/search"
+./logged.sh search build_cues python build_cues.py "$R/search/nominees.json"
+./logged.sh pilot eval python -m cues eval --model "$M" --prompt "$P" --benchmark ../data/tree_problems_pilot.jsonl \
+  --cues none --cues-file ../data/tree_cues.json --n-rollouts "$(cfg n_rollouts)" --max-new-tokens "$(cfg max_new_tokens)" \
+  --temperature "$(cfg temperature)" --top-p "$(cfg top_p)" --seed "$(cfg seed)" \
+  --gpu-memory-utilization "$(cfg gpu_memory_utilization)" --out "$R/pilot"

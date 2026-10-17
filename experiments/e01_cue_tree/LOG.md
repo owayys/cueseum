@@ -21,3 +21,19 @@
 - Every GPU-phase command runs through `scripts/logged.sh <phase> <step> cmd…`, which appends its console output to `$CUESEUM_RUNS/e01_cue_tree/<phase>/logs/<step>.log`.
 - `scripts/snapshot.sh` records nvidia-smi, uname, installed packages, git state and selected env vars under `env/<UTC timestamp>/`. It never dumps the full env: pods inject `RUNPOD_API_KEY`.
 - `scripts/pull.sh <user@host> <port> [remote_runs]` rsyncs the pod's `e01_cue_tree/` into local `runs/` after every phase. It never deletes anything locally.
+
+## Pod (2026-10-17)
+- RunPod `u7wq77zgsgdq5m`: secure cloud, EU-RO-1, 1× RTX PRO 4500 Blackwell (32 GB, driver 580.126.09, CUDA 13.0), image `runpod/base:1.0.2-ubuntu2204`, 20 GB container disk, 60 GB `/workspace` (network FS: rsync needs `--no-owner --no-group`, and uv can't hardlink, so it copies). $0.72/hr GPU, $0.731/hr all-in. Created 08:37:12Z.
+- The repo was rsynced from local at `0e64f6b` (the repo is private, so no GitHub token went onto the pod).
+- `setup_env.sh` was run unmodified into `/root/env` (container disk), with `UV_CACHE_DIR=/workspace/uv-cache` (15 GB, persistent). It took 7.5 min. Upstream's 30 tests passed, and it reports torch 2.11.0+cu130, vllm 0.26.0, cuda available. `uv pip install -e .` added only matplotlib and its deps. Upstream's pins give numpy 2.3.5, pandas 3.0.5, pyarrow 25.0.1 (local CPU venv: 2.4.6, 3.0.6, 26.0.0). cueseum's 16 tests pass on the pod. Snapshot: `env/20261017T084908Z/`.
+
+## Phase 0: smoke test (08:49–08:55Z)
+- `cues demo --model qwen4b`: rc=0. pass@1 is 0.8 with no cue and 0.6 with ` To determine` (5 MATH-500 problems × 1 rollout; workflow check only).
+- vLLM engine init takes 228 s per process, 113 s of it CUDA-graph capture (the cost of `enforce_eager=False`). The DeepGEMM `CUDA_HOME` warning is harmless, since that optional kernel is skipped.
+- Rollout records carry all 8 required fields. `load_cells` reads 10 rows. The one no-answer rollout has `committed=False` and a null `answer_key`.
+
+## Phase 2: cue list (08:56–08:58Z)
+- `cues search --beam-only`: 31 openings, 20 nominees. Upstream's `nominees.json` includes `"none": ""`, which `build_cues.py` drops.
+- Of the packet's extras, ` Let's` and ` First,` were already nominees. Added ` Okay,`, ` Alright,`, ` \n\nOkay`, for **23 cues** plus `--cues none`. Names are upstream `cue_slug`s, so they match the cell directories.
+- `token_report` (model tokenizer, rendered `boxed` prompt ending `Solution:`): no cue merges with the prompt. Ids are in `data/tree_cues_tokens.json`. Two beam cues end in a bare space (` `, ` Step `). They are kept as upstream's beam returned them.
+- Spend at 08:56Z: $0.18 (account balance $50.00 → $49.82).

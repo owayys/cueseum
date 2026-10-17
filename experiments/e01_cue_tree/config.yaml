@@ -10,6 +10,8 @@ seed: 20260819
 grader: upstream math-verify, boxed
 runs: e01_cue_tree
 gpu_hour_cap: 40
+budget_usd: 20
+gpu_memory_utilization: 0.95
 phase6_gpu_hour_cap: 15
 problems:
   source: third_party/cues/data/math_train.jsonl
