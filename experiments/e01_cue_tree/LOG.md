@@ -37,3 +37,16 @@
 - Of the packet's extras, ` Let's` and ` First,` were already nominees. Added ` Okay,`, ` Alright,`, ` \n\nOkay`, for **23 cues** plus `--cues none`. Names are upstream `cue_slug`s, so they match the cell directories.
 - `token_report` (model tokenizer, rendered `boxed` prompt ending `Solution:`): no cue merges with the prompt. Ids are in `data/tree_cues_tokens.json`. Two beam cues end in a bare space (` `, ` Step `). They are kept as upstream's beam returned them.
 - Spend at 08:56Z: $0.18 (account balance $50.00 → $49.82).
+
+## Phase 3: pilot (08:58:51–09:29:36Z, 0.51 GPU-h)
+- 35 problems × 24 cues (23 plus none) × 8 rollouts = 6,720 records. rc=0.
+- Engine init 75 s (graph compile cached from Phase 0). Generation 0.49 h, 3.45M output tokens, 1,951 tok/s.
+- Gates (`analysis/pilot_report.py`):
+  - **Projection:** full run 5.92 GPU-h ≈ $4.33 at $0.731/hr (12 × generation time + one init). That is a ceiling: the full run batches 3,360 sequences per cue against the pilot's 280.
+  - **Cap rate:** max 9.6% (` Alright,`). All others ≤ 5%.
+  - **Extraction errors:** 0.18% (has `\boxed` but no parsed answer).
+  - **Sanity:** ` To determine` 0.782 vs no-cue 0.629. Highest pilot accuracy: ` Alright,` 0.800. Lowest: ` Let $` 0.493.
+- All gates pass, so the full run was launched immediately, without reusing pilot cells (they are a separate benchmark file).
+- Spend at 09:30Z: $0.60 (balance $49.40).
+
+## Phase 4: full run (started 09:30:21Z)

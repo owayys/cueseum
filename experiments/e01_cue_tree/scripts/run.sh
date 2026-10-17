@@ -12,3 +12,8 @@ python build_problems.py
   --cues none --cues-file ../data/tree_cues.json --n-rollouts "$(cfg n_rollouts)" --max-new-tokens "$(cfg max_new_tokens)" \
   --temperature "$(cfg temperature)" --top-p "$(cfg top_p)" --seed "$(cfg seed)" \
   --gpu-memory-utilization "$(cfg gpu_memory_utilization)" --out "$R/pilot"
+python ../analysis/pilot_report.py "$R/pilot" 0.731 12
+./logged.sh full eval python -m cues eval --model "$M" --prompt "$P" --benchmark ../data/tree_problems.jsonl \
+  --cues none --cues-file ../data/tree_cues.json --n-rollouts "$(cfg n_rollouts)" --max-new-tokens "$(cfg max_new_tokens)" \
+  --temperature "$(cfg temperature)" --top-p "$(cfg top_p)" --seed "$(cfg seed)" \
+  --gpu-memory-utilization "$(cfg gpu_memory_utilization)" --out "$R/full"
