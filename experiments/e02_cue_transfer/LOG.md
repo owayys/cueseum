@@ -60,3 +60,9 @@
   
   So it is close but **not within rounding**, as the packet expected. The likely cause, unverified, is bf16 numerics differing across GPU architectures (Ampere vs Blackwell), which shifts openings near the cut-offs.
 - **e02 spend so far: $3.97** (balance $46.35 → $42.38).
+
+## Pilot descriptives (exploratory, 2026-10-18, local CPU)
+- `analysis/pilot_descriptives.py` runs on the pilot's 600 rollouts. It is **not** a hypothesis test, because Phase 2 never completed. It truncates each completion with `cueseum.rescore` (Qwen3-4B tokenizer, `transformers==5.15.0` installed locally, tokenizer only) at 4k/8k/16k/31,744 and rescores with upstream's grader, and it counts checking phrases (`let me check|double-check|verify|\bwait\b`, case-insensitive).
+- pass@1 is **unchanged at every budget**: ` Alright,` 0.860, ` To determine` 0.760, no cue 0.565. Only 22 rollouts exceed 4,096 tokens, 13 of them capped at 31,744 and all wrong. The single long correct one (` Alright,`) had boxed its answer within its first 4,096 tokens.
+- Rescoring at the full budget matches the stored grades on 600/600, with 0 timeouts.
+- Checking phrases appear in 68.0% of ` Alright,` responses, 4.0% for ` To determine` and 4.5% for no cue.
