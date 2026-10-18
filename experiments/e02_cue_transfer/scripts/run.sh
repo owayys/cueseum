@@ -19,3 +19,6 @@ MAIN=(--model "$M" --prompt "$P" --benchmark "$B" --cues none --cues-file ../dat
   --max-new-tokens "$(cfg max_new_tokens)" "${SAMPLING[@]}" --out "$R/main")
 ./logged.sh main eval_b1 python -m cues eval "${MAIN[@]}"
 ./logged.sh main eval_b2 python -m cues eval "${MAIN[@]}" --rollout-index-offset "$(cfg n_rollouts_per_batch)" --suffix _b2
+mkdir -p "$R/phase3"
+./logged.sh phase3 cueprob_14b python cue_probability.py "$(cfg source_model)" "$R/phase3/$(cfg source_model).json"
+./logged.sh phase3 cueprob_4b python cue_probability.py "$M" "$R/phase3/$M.json" "$R/phase3/$(cfg source_model).json"

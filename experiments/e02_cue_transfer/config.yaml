@@ -22,4 +22,4 @@ smoke: {problems: 5, n_rollouts: 2, max_new_tokens: 2048, cues: ["none", " Alrig
 pilot: {problems: 50, n_rollouts: 4}
 truncation_budgets: [4096, 8192, 16384, 31744]
 bootstrap: 10000
-probe: {benchmark: math_train_probe, problems: 100, extra_cues: [" Alright,", " To determine", " To"], top_beam: 5}
+probe: {benchmark: math_train_probe, problems: 100, cues: [" Alright,", " To determine", " To"], top_beam: 5, top5_4b_from_e01_beam: [" To", " We", " Let", " The", " To find"]}
