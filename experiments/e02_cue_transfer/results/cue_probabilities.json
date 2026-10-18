@@ -1,0 +1,719 @@
+{
+ "qwen4b": {
+  "model": "qwen4b",
+  "hub": "Qwen/Qwen3-4B-Base",
+  "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539",
+  "prompt": "boxed",
+  "probe": "math_train_probe",
+  "problems": 100,
+  "beam": {
+   "depth": 2,
+   "top_first": 12,
+   "top_second": 4,
+   "beam_width": 40,
+   "min_problem_fraction": 0.5
+  },
+  "own_top": [
+   " To",
+   " We",
+   " Let",
+   " The",
+   " To find"
+  ],
+  "candidates": [
+   {
+    "prefix": " To",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.20060445750132203
+   },
+   {
+    "prefix": " We",
+    "problem_fraction": 0.99,
+    "mean_beam_mass": 0.14509679341688753
+   },
+   {
+    "prefix": " Let",
+    "problem_fraction": 0.98,
+    "mean_beam_mass": 0.1034896270930767
+   },
+   {
+    "prefix": " The",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.09300672510638833
+   },
+   {
+    "prefix": " To find",
+    "problem_fraction": 0.95,
+    "mean_beam_mass": 0.08289895456420755
+   },
+   {
+    "prefix": " To solve",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.05863277481816158
+   },
+   {
+    "prefix": " Let's",
+    "problem_fraction": 0.98,
+    "mean_beam_mass": 0.0462406754100829
+   },
+   {
+    "prefix": " First",
+    "problem_fraction": 0.94,
+    "mean_beam_mass": 0.04186487936414778
+   },
+   {
+    "prefix": " Since",
+    "problem_fraction": 0.69,
+    "mean_beam_mass": 0.033794478410854936
+   },
+   {
+    "prefix": " We can",
+    "problem_fraction": 0.95,
+    "mean_beam_mass": 0.03224138310081904
+   },
+   {
+    "prefix": " First,",
+    "problem_fraction": 0.94,
+    "mean_beam_mass": 0.03177505613528457
+   },
+   {
+    "prefix": " Let $",
+    "problem_fraction": 0.96,
+    "mean_beam_mass": 0.029952642737404785
+   },
+   {
+    "prefix": " ",
+    "problem_fraction": 0.89,
+    "mean_beam_mass": 0.02974360819440335
+   },
+   {
+    "prefix": " Step",
+    "problem_fraction": 0.84,
+    "mean_beam_mass": 0.029506809767335652
+   },
+   {
+    "prefix": " Step ",
+    "problem_fraction": 0.84,
+    "mean_beam_mass": 0.029307897717668778
+   },
+   {
+    "prefix": " To determine",
+    "problem_fraction": 0.77,
+    "mean_beam_mass": 0.024093828161279522
+   },
+   {
+    "prefix": " \\",
+    "problem_fraction": 0.79,
+    "mean_beam_mass": 0.023519917917437853
+   },
+   {
+    "prefix": " We have",
+    "problem_fraction": 0.57,
+    "mean_beam_mass": 0.016883612189836698
+   },
+   {
+    "prefix": " \n",
+    "problem_fraction": 0.62,
+    "mean_beam_mass": 0.012894323179498315
+   },
+   {
+    "prefix": " We know",
+    "problem_fraction": 0.56,
+    "mean_beam_mass": 0.01276469350182834
+   },
+   {
+    "prefix": " \\boxed",
+    "problem_fraction": 0.78,
+    "mean_beam_mass": 0.011021919238661908
+   },
+   {
+    "prefix": " Since the",
+    "problem_fraction": 0.6,
+    "mean_beam_mass": 0.010683395781747526
+   },
+   {
+    "prefix": " Since $",
+    "problem_fraction": 0.5,
+    "mean_beam_mass": 0.0103264577020641
+   },
+   {
+    "prefix": " 1",
+    "problem_fraction": 0.82,
+    "mean_beam_mass": 0.006809800613084696
+   },
+   {
+    "prefix": " \\begin",
+    "problem_fraction": 0.79,
+    "mean_beam_mass": 0.00560021892994973
+   },
+   {
+    "prefix": " First we",
+    "problem_fraction": 0.94,
+    "mean_beam_mass": 0.00410508343276168
+   },
+   {
+    "prefix": "  We",
+    "problem_fraction": 0.63,
+    "mean_beam_mass": 0.0028029555755511343
+   },
+   {
+    "prefix": "  To",
+    "problem_fraction": 0.63,
+    "mean_beam_mass": 0.0027822683113444633
+   },
+   {
+    "prefix": " \nTo",
+    "problem_fraction": 0.58,
+    "mean_beam_mass": 0.0024346775124019625
+   },
+   {
+    "prefix": " Since we",
+    "problem_fraction": 0.51,
+    "mean_beam_mass": 0.001635325934823283
+   },
+   {
+    "prefix": " \nStep",
+    "problem_fraction": 0.53,
+    "mean_beam_mass": 0.0016232593433505077
+   },
+   {
+    "prefix": " \\text",
+    "problem_fraction": 0.69,
+    "mean_beam_mass": 0.0013905675099221823
+   },
+   {
+    "prefix": " Let us",
+    "problem_fraction": 0.53,
+    "mean_beam_mass": 0.001145911424788903
+   }
+  ],
+  "cues": {
+   " Alright,": {
+    "mean_prob": 0.0018495750694223362,
+    "mean_beam_mass": 0.0,
+    "median_ranks": [
+     49.0,
+     1.0
+    ],
+    "problem_fraction": 0.0,
+    "passes_min_fraction": false,
+    "removed_by": {
+     "top_first": 0.99,
+     "top_second": 0.0,
+     "beam_width": 0.01
+    },
+    "rank_by_mean_prob": 8,
+    "candidate_rank": null,
+    "token_ids": [
+     97593,
+     11
+    ]
+   },
+   " To determine": {
+    "mean_prob": 0.024377656436682563,
+    "mean_beam_mass": 0.024093828161279526,
+    "median_ranks": [
+     2.0,
+     3.0
+    ],
+    "problem_fraction": 0.77,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.2,
+     "beam_width": 0.03
+    },
+    "rank_by_mean_prob": 7,
+    "candidate_rank": 16,
+    "token_ids": [
+     2014,
+     8253
+    ]
+   },
+   " To": {
+    "mean_prob": 0.20060445750132203,
+    "mean_beam_mass": 0.20060445750132203,
+    "median_ranks": [
+     2.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 1,
+    "candidate_rank": 1,
+    "token_ids": [
+     2014
+    ]
+   },
+   " We": {
+    "mean_prob": 0.14532222665846348,
+    "mean_beam_mass": 0.14509679341688753,
+    "median_ranks": [
+     2.0
+    ],
+    "problem_fraction": 0.99,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.01,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 2,
+    "candidate_rank": 2,
+    "token_ids": [
+     1205
+    ]
+   },
+   " Let": {
+    "mean_prob": 0.10364447619300336,
+    "mean_beam_mass": 0.1034896270930767,
+    "median_ranks": [
+     3.0
+    ],
+    "problem_fraction": 0.98,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.02,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 3,
+    "candidate_rank": 3,
+    "token_ids": [
+     6771
+    ]
+   },
+   " The": {
+    "mean_prob": 0.09300672510638833,
+    "mean_beam_mass": 0.09300672510638833,
+    "median_ranks": [
+     4.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 4,
+    "candidate_rank": 4,
+    "token_ids": [
+     576
+    ]
+   },
+   " To find": {
+    "mean_prob": 0.08308523527606787,
+    "mean_beam_mass": 0.08289895456420755,
+    "median_ranks": [
+     2.0,
+     2.0
+    ],
+    "problem_fraction": 0.95,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.05,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 5,
+    "candidate_rank": 5,
+    "token_ids": [
+     2014,
+     1477
+    ]
+   },
+   " To solve": {
+    "mean_prob": 0.05863277481816158,
+    "mean_beam_mass": 0.05863277481816158,
+    "median_ranks": [
+     2.0,
+     2.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 6,
+    "candidate_rank": 6,
+    "token_ids": [
+     2014,
+     11625
+    ]
+   }
+  },
+  "provenance": {
+   "cueseum_commit": "4e3d699e41fd6eb521b5f9b6841e73038bcdf5ab",
+   "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+  }
+ },
+ "qwen14b": {
+  "model": "qwen14b",
+  "hub": "Qwen/Qwen3-14B-Base",
+  "revision": "0b0bd3732e2c374d483664439ea334928b65f304",
+  "prompt": "boxed",
+  "probe": "math_train_probe",
+  "problems": 100,
+  "beam": {
+   "depth": 2,
+   "top_first": 12,
+   "top_second": 4,
+   "beam_width": 40,
+   "min_problem_fraction": 0.5
+  },
+  "own_top": [
+   " To",
+   " To find",
+   " The",
+   " We",
+   " To solve"
+  ],
+  "candidates": [
+   {
+    "prefix": " To",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.3283941814303398
+   },
+   {
+    "prefix": " To find",
+    "problem_fraction": 0.99,
+    "mean_beam_mass": 0.14706983711888238
+   },
+   {
+    "prefix": " The",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.11629762830212713
+   },
+   {
+    "prefix": " We",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.11543774696066976
+   },
+   {
+    "prefix": " To solve",
+    "problem_fraction": 1.0,
+    "mean_beam_mass": 0.10213456544356225
+   },
+   {
+    "prefix": " Let",
+    "problem_fraction": 0.98,
+    "mean_beam_mass": 0.0829196263384074
+   },
+   {
+    "prefix": " Let's",
+    "problem_fraction": 0.98,
+    "mean_beam_mass": 0.06469634877784909
+   },
+   {
+    "prefix": " To determine",
+    "problem_fraction": 0.9,
+    "mean_beam_mass": 0.05314383754046251
+   },
+   {
+    "prefix": " Alright",
+    "problem_fraction": 0.85,
+    "mean_beam_mass": 0.039026399231515824
+   },
+   {
+    "prefix": " Alright,",
+    "problem_fraction": 0.85,
+    "mean_beam_mass": 0.03900307608997502
+   },
+   {
+    "prefix": " \n\n",
+    "problem_fraction": 0.89,
+    "mean_beam_mass": 0.03447430866304785
+   },
+   {
+    "prefix": " First",
+    "problem_fraction": 0.92,
+    "mean_beam_mass": 0.030485205198638142
+   },
+   {
+    "prefix": " \n",
+    "problem_fraction": 0.89,
+    "mean_beam_mass": 0.02849849150981754
+   },
+   {
+    "prefix": " First,",
+    "problem_fraction": 0.92,
+    "mean_beam_mass": 0.027341716183026638
+   },
+   {
+    "prefix": " We can",
+    "problem_fraction": 0.9,
+    "mean_beam_mass": 0.01936168399763074
+   },
+   {
+    "prefix": " Since",
+    "problem_fraction": 0.6,
+    "mean_beam_mass": 0.015709306756034495
+   },
+   {
+    "prefix": " Step",
+    "problem_fraction": 0.5,
+    "mean_beam_mass": 0.015643372512422503
+   },
+   {
+    "prefix": " Step ",
+    "problem_fraction": 0.5,
+    "mean_beam_mass": 0.015568999446134239
+   },
+   {
+    "prefix": " We are",
+    "problem_fraction": 0.63,
+    "mean_beam_mass": 0.011798877697833849
+   },
+   {
+    "prefix": " \n\nTo",
+    "problem_fraction": 0.89,
+    "mean_beam_mass": 0.010100175724513024
+   },
+   {
+    "prefix": " Let $",
+    "problem_fraction": 0.84,
+    "mean_beam_mass": 0.009331729430427996
+   },
+   {
+    "prefix": " \nTo",
+    "problem_fraction": 0.89,
+    "mean_beam_mass": 0.008627107516329691
+   },
+   {
+    "prefix": " We need",
+    "problem_fraction": 0.58,
+    "mean_beam_mass": 0.008472816175270091
+   },
+   {
+    "prefix": " \n\n1",
+    "problem_fraction": 0.77,
+    "mean_beam_mass": 0.005671525815326126
+   },
+   {
+    "prefix": " The problem",
+    "problem_fraction": 0.55,
+    "mean_beam_mass": 0.005157696783485668
+   },
+   {
+    "prefix": " Since the",
+    "problem_fraction": 0.56,
+    "mean_beam_mass": 0.0049520206293019306
+   },
+   {
+    "prefix": " \n\nStep",
+    "problem_fraction": 0.68,
+    "mean_beam_mass": 0.0044988194091037555
+   },
+   {
+    "prefix": " \n1",
+    "problem_fraction": 0.69,
+    "mean_beam_mass": 0.0033494901667990677
+   },
+   {
+    "prefix": " \nThe",
+    "problem_fraction": 0.55,
+    "mean_beam_mass": 0.0026107321840225382
+   },
+   {
+    "prefix": " First we",
+    "problem_fraction": 0.89,
+    "mean_beam_mass": 0.0009137574179381641
+   },
+   {
+    "prefix": " Let’s",
+    "problem_fraction": 0.58,
+    "mean_beam_mass": 0.00047182930101385837
+   },
+   {
+    "prefix": " Let us",
+    "problem_fraction": 0.5,
+    "mean_beam_mass": 0.000410233393205802
+   }
+  ],
+  "cues": {
+   " Alright,": {
+    "mean_prob": 0.03960547811318221,
+    "mean_beam_mass": 0.03900307608997502,
+    "median_ranks": [
+     7.0,
+     1.0
+    ],
+    "problem_fraction": 0.85,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.15,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 8,
+    "candidate_rank": 10,
+    "token_ids": [
+     97593,
+     11
+    ]
+   },
+   " To determine": {
+    "mean_prob": 0.05317402175156735,
+    "mean_beam_mass": 0.05314383754046251,
+    "median_ranks": [
+     1.0,
+     3.0
+    ],
+    "problem_fraction": 0.9,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.09,
+     "beam_width": 0.01
+    },
+    "rank_by_mean_prob": 7,
+    "candidate_rank": 8,
+    "token_ids": [
+     2014,
+     8253
+    ]
+   },
+   " To": {
+    "mean_prob": 0.3283941814303398,
+    "mean_beam_mass": 0.3283941814303398,
+    "median_ranks": [
+     1.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 1,
+    "candidate_rank": 1,
+    "token_ids": [
+     2014
+    ]
+   },
+   " We": {
+    "mean_prob": 0.11543774696066976,
+    "mean_beam_mass": 0.11543774696066976,
+    "median_ranks": [
+     3.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 4,
+    "candidate_rank": 4,
+    "token_ids": [
+     1205
+    ]
+   },
+   " Let": {
+    "mean_prob": 0.08310879429802298,
+    "mean_beam_mass": 0.0829196263384074,
+    "median_ranks": [
+     4.0
+    ],
+    "problem_fraction": 0.98,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.01,
+     "top_second": 0.0,
+     "beam_width": 0.01
+    },
+    "rank_by_mean_prob": 6,
+    "candidate_rank": 6,
+    "token_ids": [
+     6771
+    ]
+   },
+   " The": {
+    "mean_prob": 0.11629762830212713,
+    "mean_beam_mass": 0.11629762830212713,
+    "median_ranks": [
+     3.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 3,
+    "candidate_rank": 3,
+    "token_ids": [
+     576
+    ]
+   },
+   " To find": {
+    "mean_prob": 0.14707059783958115,
+    "mean_beam_mass": 0.14706983711888238,
+    "median_ranks": [
+     1.0,
+     2.0
+    ],
+    "problem_fraction": 0.99,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.01
+    },
+    "rank_by_mean_prob": 2,
+    "candidate_rank": 2,
+    "token_ids": [
+     2014,
+     1477
+    ]
+   },
+   " To solve": {
+    "mean_prob": 0.10213456544356227,
+    "mean_beam_mass": 0.10213456544356227,
+    "median_ranks": [
+     1.0,
+     2.0
+    ],
+    "problem_fraction": 1.0,
+    "passes_min_fraction": true,
+    "removed_by": {
+     "top_first": 0.0,
+     "top_second": 0.0,
+     "beam_width": 0.0
+    },
+    "rank_by_mean_prob": 5,
+    "candidate_rank": 5,
+    "token_ids": [
+     2014,
+     11625
+    ]
+   }
+  },
+  "provenance": {
+   "cueseum_commit": "4e3d699e41fd6eb521b5f9b6841e73038bcdf5ab",
+   "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+  }
+ },
+ "cross_check_vs_upstream_beam_qwen4b": {
+  "source": "e01 runs/e01_cue_tree/search/beam.json (upstream cues.beam, same model/prompt/probes, RTX PRO 4500)",
+  "upstream_candidates": 31,
+  "replay_candidates": 33,
+  "missing_from_replay": [],
+  "extra_in_replay": [
+   " Since $",
+   " \nStep"
+  ],
+  "max_abs_mass_diff": 0.003164457501322021,
+  "max_abs_fraction_diff": 0.040000000000000036
+ }
+}

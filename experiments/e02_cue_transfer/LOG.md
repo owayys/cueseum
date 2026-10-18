@@ -40,3 +40,23 @@
 - Measured projection on this GPU: about 72M tokens at about 334 tok/s ≈ 60 h ≈ $44 for Phase 2 alone. The packet's 16-rollout fallback is ≈ 30 h ≈ $22, plus the screen ≈ $8, so still over $25.
 - Stopped at 10:39Z per the user's checkpoint rule (tmux session killed, vLLM processes gone, GPU memory freed). No cell was written: upstream writes a cell only when its whole batch finishes, so the partial cell (~$2.3 of compute) is lost. Log pulled and checksum-verified. Pod `ozfde68yculngd` stopped at 10:40Z (volume $0.028/hr).
 - **e02 spend so far: $3.73** (balance $46.35 → $42.61).
+- The Phase 2 pod `ozfde68yculngd` was deleted at the user's request after a checksum-verified pull.
+
+## Phase 3: cue probability, H4 (2026-10-18)
+- `scripts/cue_probability.py <model> <out> [other_model.json]`:
+  - loads the model as upstream `cues/beam.py` does (bf16, `device_map="auto"`, `tok(prompt)` ids);
+  - replays the beam on each of the 100 probe problems via `cueseum.cueprob` (depth 2, top_first 12, top_second 4, width 40) and keeps every next-token distribution in a per-problem cache;
+  - measures the cue set on both models: the packet's ` Alright,`, ` To determine` and ` To`, the 4B's top 5 (` To`, ` We`, ` Let`, ` The`, ` To find`; recorded in config from e01's beam and reproduced here), and the 14B's own top 5.
+
+  The 14B ran first, so its top 5 could be passed to the 4B run.
+- Pod `gasfs5e8rrt9ju`: 1× A40 48 GB, secure, EU-SE-1, $0.59/hr, driver 580.159.03 / CUDA 13.0. It was chosen over the RTX PRO 4500 because the 14B fits in 48 GB without CPU offload, and it is cheaper per hour. Setup took 2.2 min, and all tests pass (snapshot `env/20261018T143724Z/`). The 14B ran 14:37–14:40Z (download ~1 min) and the 4B 14:40–14:42Z, both rc=0. Pulled, checksum-verified, and the pod deleted at 14:43Z. Phase 3 cost about $0.10.
+- **Results** (`results/cue_probabilities.json`):
+  - ` Alright,` on the 4B: mean prob 0.0018. Median first-token rank 49 (the beam keeps the top 12). Removed by `top_first` on 99% of problems and `beam_width` on 1%. In the beam on 0%, so never a candidate.
+  - ` Alright,` on the 14B: mean prob 0.040 (22×). Median ranks [7, 1]. In the beam on 85%. 10th of the 14B's 32 candidates, so inside the top-20 shortlist but not at the top. The 14B's top 5 are ` To`, ` To find`, ` The`, ` We`, ` To solve`.
+  - ` To determine`: 4B 0.024 (candidate 16, removed by `top_second` on 20%); 14B 0.053 (candidate 8).
+- **Cross-check vs upstream's beam** (e01 `beam.json`, same model, prompt and probes, on the RTX PRO 4500):
+  - all 31 upstream openings reproduced, plus 2 borderline extras (` Since $`, ` \nStep`);
+  - max |mass diff| 0.0032, and max |problem-fraction diff| 0.04.
+  
+  So it is close but **not within rounding**, as the packet expected. The likely cause, unverified, is bf16 numerics differing across GPU architectures (Ampere vs Blackwell), which shifts openings near the cut-offs.
+- **e02 spend so far: $3.97** (balance $46.35 → $42.38).
