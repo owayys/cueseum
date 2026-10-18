@@ -15,3 +15,7 @@ SAMPLING=(--temperature "$(cfg temperature)" --top-p "$(cfg top_p)" --seed "$(cf
 ./logged.sh pilot eval python -m cues eval --model "$M" --prompt "$P" --benchmark "$B" --cues none --cues-file ../data/cues.json \
   --problem-count "$(cfg pilot.problems)" --n-rollouts "$(cfg pilot.n_rollouts)" --max-new-tokens "$(cfg max_new_tokens)" \
   "${SAMPLING[@]}" --out "$R/pilot"
+MAIN=(--model "$M" --prompt "$P" --benchmark "$B" --cues none --cues-file ../data/cues.json --n-rollouts "$(cfg n_rollouts_per_batch)" \
+  --max-new-tokens "$(cfg max_new_tokens)" "${SAMPLING[@]}" --out "$R/main")
+./logged.sh main eval_b1 python -m cues eval "${MAIN[@]}"
+./logged.sh main eval_b2 python -m cues eval "${MAIN[@]}" --rollout-index-offset "$(cfg n_rollouts_per_batch)" --suffix _b2
