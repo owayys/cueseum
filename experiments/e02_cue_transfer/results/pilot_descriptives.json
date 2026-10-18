@@ -1,0 +1,45 @@
+{
+ "label": "exploratory: pilot only (50 problems x 4 rollouts), no hypothesis tests",
+ "records": 600,
+ "full_budget_rescore_agrees_with_stored": 1.0,
+ "timeouts": 0,
+ "by_cue": {
+  "' Alright,'": {
+   "correct": 0.86,
+   "checking": 0.68,
+   "acc_4096": 0.86,
+   "acc_8192": 0.86,
+   "acc_16384": 0.86,
+   "acc_31744": 0.86
+  },
+  "' To determine'": {
+   "correct": 0.76,
+   "checking": 0.04,
+   "acc_4096": 0.76,
+   "acc_8192": 0.76,
+   "acc_16384": 0.76,
+   "acc_31744": 0.76
+  },
+  "no cue": {
+   "correct": 0.565,
+   "checking": 0.045,
+   "acc_4096": 0.565,
+   "acc_8192": 0.565,
+   "acc_16384": 0.565,
+   "acc_31744": 0.565
+  }
+ },
+ "provenance": {
+  "cueseum_commit": "1d268154c7d811b07993fecc72fffa9363fd51ea",
+  "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89",
+  "tokenizer": "Qwen/Qwen3-4B-Base",
+  "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539",
+  "budgets": [
+   4096,
+   8192,
+   16384,
+   31744
+  ],
+  "checking_regex": "let me check|double-check|verify|\\bwait\\b"
+ }
+}
