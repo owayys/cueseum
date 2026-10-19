@@ -23,3 +23,7 @@ pilot: {problems: 50, n_rollouts: 4}
 truncation_budgets: [4096, 8192, 16384, 31744]
 bootstrap: 10000
 probe: {benchmark: math_train_probe, problems: 100, cues: [" Alright,", " To determine", " To"], top_beam: 5, top5_4b_from_e01_beam: [" To", " We", " Let", " The", " To find"]}
+exploratory_scaling:
+  qwen0.6b: {hub: Qwen/Qwen3-0.6B-Base, revision: da87bfb608c14b7cf20ba1ce41287e8de496c0cd}
+  qwen1.7b: {hub: Qwen/Qwen3-1.7B-Base, revision: ea980cb0a6c2ae4b936e82123acc929f1cec04c1}
+  qwen8b: {hub: Qwen/Qwen3-8B-Base, revision: 49e3418fbbbca6ecbdf9608b4d22e5a407081db4}
