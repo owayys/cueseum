@@ -73,3 +73,16 @@
 - **Incident:** the retry script never recognized a successful `runpodctl pod create`. It parsed the pod id with `grep '"id":"'`, but runpodctl pretty-prints `"id": "…"`, and its JSON parse failed on interleaved warning lines. Each success was logged as a failure, and the script moved on to the next GPU type. Over two 15-min rounds (20:46–21:04Z) it created **6 pods** (2× A40, L4, RTX 4090, 2× L40S), none of which ran any work. Found on a status check at 21:15Z, when the script was killed and all 6 pods deleted (each `not_found` afterwards). **Cost $1.77**, no data ($1.39 at deletion, plus $0.38 that settled afterwards). The script had only been syntax-checked; its success path was never tested.
 - **e02 spend so far: $5.75** (balance $46.35 → $40.60, read at 21:22Z).
 - 21:22–21:23Z: attended retry. The only secure CUDA ≥ 13 stock was a B300 MIG 34 GB slice; the create failed with "no longer any instances available". Afterwards the account had 0 pods. Stopped; no further attempts.
+- 21:23–21:38Z: **attended run, done.** One pod `7chxrtbm5m6g48` (RTX PRO 4000 Blackwell 24 GB, $0.57/hr, driver 595.91.07 / CUDA 13.2). After each step I checked that the account held exactly 1 pod. Setup rc=0 (snapshot `env/20261019T212938Z/`). 4B anchor, 0.6B, 1.7B and 8B all rc=0. Pulled, checksum-verified, pod deleted (`not_found`, 0 pods). **Cost $0.12.** e02 spend: $5.87.
+- **Results** (`results/cue_probabilities_scaling.json`; 100 probe problems, boxed prompt):
+
+| model | ` Alright,` mean prob | median first-token rank | in beam on | beam candidate rank |
+|---|---|---|---|---|
+| 0.6B | 0.072 | 11 | 54% | 5 / 32 |
+| 1.7B | 0.0057 | 20 | 19% | — |
+| 4B | 0.0018 | 49 | 0% | — |
+| 8B | 0.0003 | 120 | 0% | — |
+| 14B | 0.040 | 7 | 85% | 10 / 32 |
+
+- **Anchor:** the 4B re-measured on the RTX PRO 4000 gives 0.0019 / rank 48.5 / 0%, against 0.0018 / 49 / 0% on the A40, so the GPU difference is negligible here.
+- **Not monotonic in size.** The probability falls from 0.6B to 8B (about 240×), then jumps at 14B. That argues against "larger models assign it more probability" as a general rule. More likely, each size's training data or procedure differs. This is exploratory and only describes opening probability, not whether the cue helps each model.
