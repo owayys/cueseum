@@ -1,0 +1,366 @@
+{
+ "label": "exploratory: not pre-registered; e02 scope deviation at the user's direction",
+ "cue": " Alright,",
+ "models": {
+  "0.6B": {
+   "hub": "Qwen/Qwen3-0.6B-Base",
+   "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd",
+   "gpu": "RTX PRO 4000 Blackwell",
+   "own_top": [
+    " To",
+    " We",
+    " The",
+    " Alright",
+    " Alright,"
+   ],
+   "candidates": 32,
+   "cues": {
+    " Alright,": {
+     "mean_prob": 0.0718526272561009,
+     "median_ranks": [
+      11.0,
+      1.0
+     ],
+     "problem_fraction": 0.54,
+     "candidate_rank": 5,
+     "removed_by": {
+      "top_first": 0.43,
+      "top_second": 0.0,
+      "beam_width": 0.03
+     }
+    },
+    " To determine": {
+     "mean_prob": 0.022743329455085302,
+     "median_ranks": [
+      2.0,
+      3.0
+     ],
+     "problem_fraction": 0.87,
+     "candidate_rank": 14,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.05,
+      "beam_width": 0.08
+     }
+    },
+    " To": {
+     "mean_prob": 0.14953177286311983,
+     "median_ranks": [
+      2.0
+     ],
+     "problem_fraction": 1.0,
+     "candidate_rank": 1,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    }
+   },
+   "provenance": {
+    "cueseum_commit": "567fa0f0cb1042b8c60f4d2ef9047258c510f844",
+    "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+   }
+  },
+  "1.7B": {
+   "hub": "Qwen/Qwen3-1.7B-Base",
+   "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+   "gpu": "RTX PRO 4000 Blackwell",
+   "own_top": [
+    " To",
+    " Let",
+    " To find",
+    " To solve",
+    " The"
+   ],
+   "candidates": 34,
+   "cues": {
+    " Alright,": {
+     "mean_prob": 0.00574527257188958,
+     "median_ranks": [
+      20.0,
+      1.0
+     ],
+     "problem_fraction": 0.19,
+     "candidate_rank": null,
+     "removed_by": {
+      "top_first": 0.8,
+      "top_second": 0.0,
+      "beam_width": 0.01
+     }
+    },
+    " To determine": {
+     "mean_prob": 0.04301259070257674,
+     "median_ranks": [
+      1.0,
+      3.0
+     ],
+     "problem_fraction": 0.88,
+     "candidate_rank": 8,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.1,
+      "beam_width": 0.02
+     }
+    },
+    " To": {
+     "mean_prob": 0.30199526347219946,
+     "median_ranks": [
+      1.0
+     ],
+     "problem_fraction": 1.0,
+     "candidate_rank": 1,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    }
+   },
+   "provenance": {
+    "cueseum_commit": "567fa0f0cb1042b8c60f4d2ef9047258c510f844",
+    "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+   }
+  },
+  "4B": {
+   "hub": "Qwen/Qwen3-4B-Base",
+   "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539",
+   "gpu": "A40",
+   "own_top": [
+    " To",
+    " We",
+    " Let",
+    " The",
+    " To find"
+   ],
+   "candidates": 33,
+   "cues": {
+    " Alright,": {
+     "mean_prob": 0.0018495750694223362,
+     "median_ranks": [
+      49.0,
+      1.0
+     ],
+     "problem_fraction": 0.0,
+     "candidate_rank": null,
+     "removed_by": {
+      "top_first": 0.99,
+      "top_second": 0.0,
+      "beam_width": 0.01
+     }
+    },
+    " To determine": {
+     "mean_prob": 0.024377656436682563,
+     "median_ranks": [
+      2.0,
+      3.0
+     ],
+     "problem_fraction": 0.77,
+     "candidate_rank": 16,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.2,
+      "beam_width": 0.03
+     }
+    },
+    " To": {
+     "mean_prob": 0.20060445750132203,
+     "median_ranks": [
+      2.0
+     ],
+     "problem_fraction": 1.0,
+     "candidate_rank": 1,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    }
+   },
+   "provenance": {
+    "cueseum_commit": "4e3d699e41fd6eb521b5f9b6841e73038bcdf5ab",
+    "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+   }
+  },
+  "4B_anchor": {
+   "hub": "Qwen/Qwen3-4B-Base",
+   "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539",
+   "gpu": "RTX PRO 4000 Blackwell",
+   "own_top": [
+    " To",
+    " We",
+    " Let",
+    " The",
+    " To find"
+   ],
+   "candidates": 32,
+   "cues": {
+    " Alright,": {
+     "mean_prob": 0.0018651787961351072,
+     "median_ranks": [
+      48.5,
+      1.0
+     ],
+     "problem_fraction": 0.0,
+     "candidate_rank": null,
+     "removed_by": {
+      "top_first": 0.99,
+      "top_second": 0.0,
+      "beam_width": 0.01
+     }
+    },
+    " To determine": {
+     "mean_prob": 0.02424329473123953,
+     "median_ranks": [
+      2.0,
+      3.0
+     ],
+     "problem_fraction": 0.78,
+     "candidate_rank": 16,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.2,
+      "beam_width": 0.02
+     }
+    },
+    " To": {
+     "mean_prob": 0.1982057393528521,
+     "median_ranks": [
+      2.0
+     ],
+     "problem_fraction": 1.0,
+     "candidate_rank": 1,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    }
+   },
+   "provenance": {
+    "cueseum_commit": "567fa0f0cb1042b8c60f4d2ef9047258c510f844",
+    "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+   }
+  },
+  "8B": {
+   "hub": "Qwen/Qwen3-8B-Base",
+   "revision": "49e3418fbbbca6ecbdf9608b4d22e5a407081db4",
+   "gpu": "RTX PRO 4000 Blackwell",
+   "own_top": [
+    " We",
+    " The",
+    " Let",
+    " ",
+    " 1"
+   ],
+   "candidates": 24,
+   "cues": {
+    " Alright,": {
+     "mean_prob": 0.00030841202500773155,
+     "median_ranks": [
+      119.5,
+      1.0
+     ],
+     "problem_fraction": 0.0,
+     "candidate_rank": null,
+     "removed_by": {
+      "top_first": 1.0,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    },
+    " To determine": {
+     "mean_prob": 0.003977243080504383,
+     "median_ranks": [
+      6.0,
+      3.0
+     ],
+     "problem_fraction": 0.56,
+     "candidate_rank": 23,
+     "removed_by": {
+      "top_first": 0.12,
+      "top_second": 0.27,
+      "beam_width": 0.05
+     }
+    },
+    " To": {
+     "mean_prob": 0.055390794077538885,
+     "median_ranks": [
+      6.0
+     ],
+     "problem_fraction": 0.87,
+     "candidate_rank": 6,
+     "removed_by": {
+      "top_first": 0.12,
+      "top_second": 0.0,
+      "beam_width": 0.01
+     }
+    }
+   },
+   "provenance": {
+    "cueseum_commit": "567fa0f0cb1042b8c60f4d2ef9047258c510f844",
+    "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+   }
+  },
+  "14B": {
+   "hub": "Qwen/Qwen3-14B-Base",
+   "revision": "0b0bd3732e2c374d483664439ea334928b65f304",
+   "gpu": "A40",
+   "own_top": [
+    " To",
+    " To find",
+    " The",
+    " We",
+    " To solve"
+   ],
+   "candidates": 32,
+   "cues": {
+    " Alright,": {
+     "mean_prob": 0.03960547811318221,
+     "median_ranks": [
+      7.0,
+      1.0
+     ],
+     "problem_fraction": 0.85,
+     "candidate_rank": 10,
+     "removed_by": {
+      "top_first": 0.15,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    },
+    " To determine": {
+     "mean_prob": 0.05317402175156735,
+     "median_ranks": [
+      1.0,
+      3.0
+     ],
+     "problem_fraction": 0.9,
+     "candidate_rank": 8,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.09,
+      "beam_width": 0.01
+     }
+    },
+    " To": {
+     "mean_prob": 0.3283941814303398,
+     "median_ranks": [
+      1.0
+     ],
+     "problem_fraction": 1.0,
+     "candidate_rank": 1,
+     "removed_by": {
+      "top_first": 0.0,
+      "top_second": 0.0,
+      "beam_width": 0.0
+     }
+    }
+   },
+   "provenance": {
+    "cueseum_commit": "4e3d699e41fd6eb521b5f9b6841e73038bcdf5ab",
+    "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89"
+   }
+  }
+ }
+}
