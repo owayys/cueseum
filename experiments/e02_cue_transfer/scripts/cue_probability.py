@@ -17,7 +17,7 @@ CFG = yaml.safe_load((E / "config.yaml").read_text())
 FILTERS = {"top_first": 12, "top_second": 4, "beam_width": 40}
 key, out = sys.argv[1], sys.argv[2]
 extra = json.load(open(sys.argv[3]))["own_top"] if len(sys.argv) > 3 else []
-entry = M.resolve(key)
+entry = CFG.get("exploratory_scaling", {}).get(key) or M.resolve(key)
 tok = AutoTokenizer.from_pretrained(entry["hub"], revision=entry["revision"], trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(entry["hub"], revision=entry["revision"], dtype=torch.bfloat16,
                                              device_map="auto", trust_remote_code=True).eval()
