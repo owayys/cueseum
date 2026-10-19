@@ -66,3 +66,9 @@
 - pass@1 is **unchanged at every budget**: ` Alright,` 0.860, ` To determine` 0.760, no cue 0.565. Only 22 rollouts exceed 4,096 tokens, 13 of them capped at 31,744 and all wrong. The single long correct one (` Alright,`) had boxed its answer within its first 4,096 tokens.
 - Rescoring at the full budget matches the stored grades on 600/600, with 0 timeouts.
 - Checking phrases appear in 68.0% of ` Alright,` responses, 4.0% for ` To determine` and 4.5% for no cue.
+
+## Exploratory: Qwen3 family scaling of ` Alright,` probability (2026-10-19/20, not run)
+- The user asked to measure ` Alright,`'s opening probability on Qwen3-0.6B/1.7B/8B-Base (dense only) as **e02 Exploratory**. That deviates from the packet's scope rule ("do not add other model pairs") at the user's direction. Revisions were pinned from the Hub, a 4B re-measurement was added as an anchor, and `cue_probability.py` takes the models from `config.exploratory_scaling`.
+- 20:41Z: every secure GPU type showed no stock on CUDA ≥ 13 hosts. The user chose an unattended retry loop with a 60-min pod cap.
+- **Incident:** the retry script never recognized a successful `runpodctl pod create`. It parsed the pod id with `grep '"id":"'`, but runpodctl pretty-prints `"id": "…"`, and its JSON parse failed on interleaved warning lines. Each success was logged as a failure, and the script moved on to the next GPU type. Over two 15-min rounds (20:46–21:04Z) it created **6 pods** (2× A40, L4, RTX 4090, 2× L40S), none of which ran any work. Found on a status check at 21:15Z, when the script was killed and all 6 pods deleted (each `not_found` afterwards). **Cost $1.39**, no data. The script had only been syntax-checked; its success path was never tested.
+- **e02 spend so far: $5.37** (balance $46.35 → $40.98).
