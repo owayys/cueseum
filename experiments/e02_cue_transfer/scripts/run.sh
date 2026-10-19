@@ -22,6 +22,7 @@ MAIN=(--model "$M" --prompt "$P" --benchmark "$B" --cues none --cues-file ../dat
 mkdir -p "$R/phase3"
 ./logged.sh phase3 cueprob_14b python cue_probability.py "$(cfg source_model)" "$R/phase3/$(cfg source_model).json"
 ./logged.sh phase3 cueprob_4b python cue_probability.py "$M" "$R/phase3/$M.json" "$R/phase3/$(cfg source_model).json"
+./logged.sh exploratory_scaling cueprob_qwen4b_anchor python cue_probability.py "$M" "$R/phase3/qwen4b_anchor.json" "$R/phase3/$(cfg source_model).json"
 for m in qwen0.6b qwen1.7b qwen8b; do
   ./logged.sh exploratory_scaling "cueprob_$m" python cue_probability.py "$m" "$R/phase3/$m.json" "$R/phase3/$(cfg source_model).json"
 done
