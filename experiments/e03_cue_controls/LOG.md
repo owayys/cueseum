@@ -48,3 +48,12 @@
 ## Stage 3: confirm, skipped by rule
 - No control met the forwarding rule, so the packet's confirm stage has nothing to run. The 350 confirm problems remain unused. Every control result is screen-only evidence, as §6 provides.
 - **e03 spend so far: $0.69.**
+
+## Stage 4: analysis and report (2026-10-21, local CPU)
+- `analysis/final.py`:
+  - for the 6 B–D controls: per-problem paired differences, 10,000 bootstrap resamples (seed 0), two-sided p (floored at 1/10,001), and Holm step-down with adjusted-level percentile CIs;
+  - descriptive pass@1 CIs per cue;
+  - reference comparisons outside the family;
+  - writes `results/scores.parquet` and `results/summary.json`.
+- **All six are below** after Holm (the tightest is ` \n\nOkay`, +0.104 [+0.049, +0.158] at 99.2%). **Decision: row 1, specific to ` Alright,`.** All p-values sit at the floor, so Holm's ordering among them is a tie; the tie gave the closest control the strictest level, which is the conservative case.
+- REPORT.md, the README row and the `docs/findings.md` paragraph are written. **Total e03 spend: $0.69.**
