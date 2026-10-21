@@ -18,4 +18,4 @@ export CUESEUM_RUNS=/path/to/runs HF_HOME=/path/to/hf RUNS=$CUESEUM_RUNS
 |---|---|---|---|
 | e01 | Do optimal token cues form a tree over problem groups? | done: not supported | [REPORT](experiments/e01_cue_tree/REPORT.md) |
 | e02 | Do cues from a larger model transfer to a smaller sibling? | paused: H1 over budget | [REPORT](experiments/e02_cue_transfer/REPORT.md) |
-| e03 | Is ` Alright,` specifically good for Qwen3-4B, or are similar openers equally good? | planned (awaiting approval) | [REPORT](experiments/e03_cue_controls/REPORT.md) |
+| e03 | Is ` Alright,` specifically good for Qwen3-4B, or are similar openers equally good? | done: specific to ` Alright,` (screen) | [REPORT](experiments/e03_cue_controls/REPORT.md) |
