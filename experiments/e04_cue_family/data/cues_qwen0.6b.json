@@ -1,0 +1,75 @@
+{
+ "model": "qwen0.6b",
+ "groups": {
+  "A_target": [
+   " Alright,"
+  ],
+  "B_other_model_cues": [
+   " \n\nOkay",
+   " \n\n"
+  ],
+  "C_reasoning_style": [
+   " Okay,"
+  ],
+  "D_probability_matched": [
+   " Since",
+   " We",
+   " The"
+  ],
+  "E_reference": [
+   " To determine",
+   " To"
+  ],
+  "E_beam_proposals": []
+ },
+ "eval": {
+  "spAlrightc-f5c341ea1bba0fa0cb81b77fd8bc00f3138be6b530134ca7f42ec0b4437c511c": " Alright,",
+  "spn2Okay-549550be4f47222ea4ee4e259387e6d22203c69b837b3b36416fbbdad049e386": " \n\nOkay",
+  "spn2-16647954c146404e2b7418ad84f45ea5430a2b844ae367ccb8ad371b8b8465f5": " \n\n",
+  "spOkayc-6b5d723e26f07a0091095ae1c6da2392a9ad8bfbf2a045ac132846898816f2bd": " Okay,",
+  "spSince-bd3592646fbe5736a5b919c74d31dc120918063e03ca56f18489c2c96ebf3aaa": " Since",
+  "spWe-5446cbae2b98037d58c6806e98cf500192adf5507b7cdc2d1bcb25ccad4a5a80": " We",
+  "spThe-2c16f3cac1d4fb2e478b7c16193cf258ace331e8290ff58596a503540bad790e": " The",
+  "spTospdetermine-a83b7b6c8e8f3a793f01dbe6618f107ff2063a4ae3dc1932fb768a7c8dba75c8": " To determine",
+  "spTo-f30c92c1535cb8a7a19e4c081d9e05e3279547311774871655d50b13cce76593": " To"
+ },
+ "dropped_from_E_as_duplicates": [
+  " We",
+  " The"
+ ],
+ "stage1": {
+  "reasoning_first_words": [
+   [
+    "Okay,",
+    400
+   ]
+  ],
+  "anchor": {
+   "token": " Alright",
+   "mean_prob": 0.06987566500902176,
+   "rank": 4
+  },
+  "band": [
+   0.03493783250451088,
+   0.13975133001804352
+  ],
+  "n_candidates": 4,
+  "picked": [
+   {
+    "token": " Since",
+    "mean_prob": 0.04636151343584061,
+    "rank": 6
+   },
+   {
+    "token": " We",
+    "mean_prob": 0.1261611133813858,
+    "rank": 2
+   },
+   {
+    "token": " The",
+    "mean_prob": 0.10381295531988144,
+    "rank": 3
+   }
+  ]
+ }
+}

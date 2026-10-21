@@ -1,0 +1,77 @@
+{
+ "model": "qwen8b",
+ "groups": {
+  "A_target": [
+   " Alright,"
+  ],
+  "B_other_model_cues": [
+   " \n\nOkay",
+   " \n\n"
+  ],
+  "C_reasoning_style": [
+   " Okay,"
+  ],
+  "D_probability_matched": [
+   " Below",
+   " Half",
+   " Re"
+  ],
+  "E_reference": [
+   " To determine",
+   " To"
+  ],
+  "E_beam_proposals": [
+   " We",
+   " The"
+  ]
+ },
+ "eval": {
+  "spAlrightc-f5c341ea1bba0fa0cb81b77fd8bc00f3138be6b530134ca7f42ec0b4437c511c": " Alright,",
+  "spn2Okay-549550be4f47222ea4ee4e259387e6d22203c69b837b3b36416fbbdad049e386": " \n\nOkay",
+  "spn2-16647954c146404e2b7418ad84f45ea5430a2b844ae367ccb8ad371b8b8465f5": " \n\n",
+  "spOkayc-6b5d723e26f07a0091095ae1c6da2392a9ad8bfbf2a045ac132846898816f2bd": " Okay,",
+  "spBelow-1f3e38148cd8be99965ccabcfed8e2483e507785144d3be255d1345ec4262111": " Below",
+  "spHalf-4e830aa7d9c82d349a8e0f7f17d8cd73ca7cde995107e17d02d772feefc96dfb": " Half",
+  "spRe-a3df481d275309d8d621270b7a411af0e203a97da77e0f948e090b4352d53e7c": " Re",
+  "spTospdetermine-a83b7b6c8e8f3a793f01dbe6618f107ff2063a4ae3dc1932fb768a7c8dba75c8": " To determine",
+  "spTo-f30c92c1535cb8a7a19e4c081d9e05e3279547311774871655d50b13cce76593": " To",
+  "spWe-5446cbae2b98037d58c6806e98cf500192adf5507b7cdc2d1bcb25ccad4a5a80": " We",
+  "spThe-2c16f3cac1d4fb2e478b7c16193cf258ace331e8290ff58596a503540bad790e": " The"
+ },
+ "dropped_from_E_as_duplicates": [],
+ "stage1": {
+  "reasoning_first_words": [
+   [
+    "Okay,",
+    400
+   ]
+  ],
+  "anchor": {
+   "token": " Alright",
+   "mean_prob": 0.0003073870902881026,
+   "rank": 120
+  },
+  "band": [
+   0.0001536935451440513,
+   0.0006147741805762053
+  ],
+  "n_candidates": 87,
+  "picked": [
+   {
+    "token": " Below",
+    "mean_prob": 0.0001554319605929777,
+    "rank": 175
+   },
+   {
+    "token": " Half",
+    "mean_prob": 0.0003880340373143554,
+    "rank": 104
+   },
+   {
+    "token": " Re",
+    "mean_prob": 0.0004023266665171832,
+    "rank": 99
+   }
+  ]
+ }
+}
