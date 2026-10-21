@@ -26,7 +26,7 @@ probability_matched:
   band: [0.5, 2.0]
   take: 3
   draw_seed: 0
-  exclude_words: [Okay, Ok, Alright, So, Well, Hmm, Right, Yes, Sure, Now, Oh, Great, Good, Fine]
+  exclude_words: ["Okay", "Ok", "Alright", "So", "Well", "Hmm", "Right", "Yes", "Sure", "Now", "Oh", "Great", "Good", "Fine"]
 screen_forward_lower_bound: 0.05
 bootstrap: 10000
 alpha: 0.05
