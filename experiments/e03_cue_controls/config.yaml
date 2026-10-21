@@ -1,0 +1,34 @@
+model: qwen4b
+model_hub: Qwen/Qwen3-4B-Base
+model_revision: 906bfd4b4dc7f14ee4320094d8b41684abff8539
+prompt: boxed
+benchmark: math500
+exclude_first: 50
+split_seed: 0
+screen_problems: 100
+confirm_problems: 350
+temperature: 0.6
+top_p: 0.95
+n_rollouts: 8
+max_new_tokens: 4096
+seed: 20260819
+gpu_memory_utilization: 0.95
+target: " Alright,"
+groups:
+  other_model_cues: [" \n\nOkay", " \n\n"]
+  reference: [" To determine", " To"]
+reasoning_style:
+  hub: Qwen/Qwen3-4B
+  revision: 1cfa9a7208912126459214e8b04321603b3df60c
+  probe: {benchmark: math_train_probe, problems: 100, samples: 4, max_new_tokens: 12}
+  take: 3
+probability_matched:
+  band: [0.5, 2.0]
+  take: 3
+  draw_seed: 0
+  exclude_words: [Okay, Ok, Alright, So, Well, Hmm, Right, Yes, Sure, Now, Oh, Great, Good, Fine]
+screen_forward_lower_bound: 0.05
+bootstrap: 10000
+alpha: 0.05
+budget_usd: 8
+gpu_hour_cap: 10
