@@ -22,3 +22,29 @@
 
   That makes 9 cues plus no cue.
 - **e03 spend so far: $0.06.**
+
+## Stage 2: screen (2026-10-21, 08:54–09:58Z)
+- `analysis/screen.py` (the forwarding rule) was tested on synthetic rollouts in upstream's format before any GPU spend: a planted close control was forwarded, separated ones weren't, and reference cues were never forwarded.
+- Pod `82csyqgzmops6t`: 1× A40, secure, $0.59/hr, driver 595.91.07. Attended, with the pod count checked after every step. Setup rc=0 (snapshot `env/20261021T085801Z/`). `stage2.sh` = `run.sh` without the stage-1 lines, generated on the pod by `sed`, so the stage-1 outputs weren't overwritten.
+- Screen eval 08:58:17–09:58:10Z (1.0 h), rc=0: 10 cells × 100 problems × 8 rollouts at 4,096 tokens. vLLM init 53 s, about 1,730 tok/s. Pulled, checksum-verified, pod deleted (`not_found`, 0 pods). **Cost $0.63.**
+- `results/screen.json`. pass@1:
+
+| cue | pass@1 |
+|---|---|
+| ` Alright,` | 0.744 |
+| ` To determine` | 0.684 |
+| ` \n\nOkay` | 0.640 |
+| ` To` | 0.603 |
+| ` Okay,` | 0.580 |
+| ` \n\n` | 0.522 |
+| no cue | 0.500 |
+| ` It` | 0.426 |
+| ` Every` | 0.372 |
+| ` Each` | 0.372 |
+
+- (` Alright,` − control) 95% CI lower bounds across groups B–D range from +0.064 to +0.310, all ≥ +0.05, so **no control was forwarded**.
+- ` Alright,` has the highest cap rate (13.5%) and no-answer rate (13.1%) at 4k, and the longest outputs (mean 1,613 tokens). Capped responses count as wrong, so the 4k budget biases *against* ` Alright,`. The packet's case for 4k (e02's pilot: no change from 31k) is weaker on these problems.
+
+## Stage 3: confirm, skipped by rule
+- No control met the forwarding rule, so the packet's confirm stage has nothing to run. The 350 confirm problems remain unused. Every control result is screen-only evidence, as §6 provides.
+- **e03 spend so far: $0.69.**
