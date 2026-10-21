@@ -40,7 +40,8 @@ tok, model = load(m)
 next_probs = cueprob.hf_next_probs(model)
 mean = np.mean([next_probs(tok(PROMPTS[cfg["prompt"]].format(q=p["problem"]))["input_ids"]) for p in problems], axis=0)
 anchor = tok.encode(cfg["target"], add_special_tokens=False)[0]
-decode = lambda t: tok.decode([t]) if t < len(tok) else ""
+n_tok = len(tok)
+decode = lambda t: tok.decode([t]) if t < n_tok else ""
 cands, band = cuederive.band_candidates(mean, anchor, pm["band"], decode, pm["exclude_words"])
 picked = cuederive.draw(cands, pm["take"], pm["draw_seed"])
 rank = lambda t: int((mean > mean[t]).sum()) + 1
