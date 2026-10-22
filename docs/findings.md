@@ -12,3 +12,13 @@ On Qwen3-4B-Base (100 fresh MATH-500 problems, 8 rollouts, 4k tokens), Qwen3-14B
 The closest control trailed by 10.4 points (Holm lower bound +4.9). ` Alright,` also beat the 4B's registered ` To determine` by +6.0 [+1.8, +10.3], replicating e01 and the e02 pilot on fresh problems. So the advantage isn't a generic reasoning-style, any-model-cue or rare-opener effect. It is specific to this cue on this model.
 
 This is screen-only evidence, since no control came close enough to need the confirm stage. At 4k, ` Alright,` loses the most rollouts to the cap (13.5%), which biases against it. Cost: $0.69. [Report](../experiments/e03_cue_controls/REPORT.md).
+
+## e04: ` Alright,` across the Qwen3 family (specific at every size)
+On Qwen3-0.6B, 1.7B and 8B Base (plus the 4B from e03), Qwen3-14B's cue ` Alright,` beat every rule-selected control after Holm correction within each size:
+- other models' cues;
+- each size's own reasoning opener ` Okay,`;
+- probability-matched openers.
+
+The narrowest margin was 0.6B vs ` Okay,` on 350 confirm problems: +2.2 [+0.2, +4.3]. The margin over the closest control grows with size (+2 → +11 → +10 at 4B → +15). Descriptively, the cue helps more at larger sizes (0.6B 0.28 → 0.43; 8B 0.51 → 0.78) even though the larger models are far less likely to write it (first-token rank 4 at 0.6B, 120 at 8B). How natural a cue is to a model doesn't predict its benefit.
+
+Limits: screen evidence for most controls, a 4k budget, math only, no 14B. Cost: $3.38. [Report](../experiments/e04_cue_family/REPORT.md).
