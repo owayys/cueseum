@@ -131,7 +131,7 @@
   }
  },
  "provenance": {
-  "cueseum_commit": "e3b8b695a5b82d9291634470f85d10dd88c58da3",
+  "cueseum_commit": "fd001c7a399cc00877fed726875a27c533753473",
   "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89",
   "model": "Qwen/Qwen3-1.7B-Base",
   "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
