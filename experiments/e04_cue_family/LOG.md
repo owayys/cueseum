@@ -66,3 +66,18 @@
     - n = ⌈((z₁₋₀.₀₅/₍₂·₄₎ + z₀.₈) · sd / g)²⌉, capped at 350.
   - Only confirm data count toward conclusions. The pilot is reported as the pilot.
 - **Budget:** if the projected e04 total including a confirm would exceed $5, stop and ask the user first.
+- **Pilot run (2026-10-22, 15:18–15:44Z):** pod `sz2h99kds4qg5u`, 1× A40, $0.59/hr. Attended. Setup rc=0 (snapshot `env/20261022T152300Z/`). Pilot eval 15:23–15:43Z, rc=0, 5 cells × 30 problems × 8 rollouts. Revision, `--chat` and `--no-think` were asserted in every record. Pulled, checksum-verified, pod deleted (`not_found`, 0 pods). **Cost $0.24.**
+- **Pilot pass@1:**
+
+| cue | pass@1 | cap rate | no answer | mean tokens |
+|---|---|---|---|---|
+| ` Alright,` | 0.887 | 7.1% | 5.8% | 1,205 |
+| no cue | 0.879 | 1.7% | 1.7% | 880 |
+| ` To determine` | 0.879 | 0.4% | 0.4% | 878 |
+| ` \n\nOkay` | 0.871 | 7.1% | 6.2% | 1,298 |
+| ` Okay,` | 0.846 | 11.3% | 10.0% | 1,480 |
+
+- **` Alright,` − X:** none +0.008 [−0.042, +0.058]; ` Okay,` +0.042 [−0.013, +0.108]; ` \n\nOkay` +0.017 [−0.021, +0.054]; ` To determine` +0.008 [−0.042, +0.050].
+- **Rule outcome:** confirm, with n = 132 (` Okay,` had |diff| > 0.02 and a CI outside ±0.06; sd_max 0.172, g = 0.05).
+- **The user decided to stop at the pilot,** so there is no confirm stage. As noted when testing the rule, at 30 problems the stop condition is rarely met.
+- **e04 spend so far: $3.67** (balance $36.32 → $36.09).

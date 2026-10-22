@@ -16,7 +16,7 @@ The narrowest margin is at 0.6B vs ` Okay,`: +2.2 points, with a Holm lower boun
   - **C:** every size's post-trained model opened 400/400 reasoning traces with "Okay,".
   - **D:** seeded draws from tokens within 0.5–2× of ` Alright`'s first-token probability for that size.
 - **Confirm stage:** run where the screen forwarded controls. The 0.6B forwarded ` Okay,` and ` \n\nOkay`; the 1.7B forwarded ` \n\nOkay`.
-- **Cost:** $3.43, attended, one pod per stage.
+- **Cost:** $3.43 for the main experiment (plus $0.24 for the exploratory pilot), attended, one pod per stage.
 
 ## Results
 **Screen pass@1** (100 problems; the 4B row is e03's):
@@ -71,5 +71,21 @@ Full tables are in `results/summary_<size>.json`.
 - The 14B, to anchor the own-cue comparison.
 - Mechanism: why "Alright," helps more than "Okay," in base models.
 
+## Exploratory (not pre-registered): post-trained Qwen3-8B, thinking off — pilot only
+Run at the user's request after the main analysis. The decision rules were written to LOG before any data.
+- **Setup:** Qwen/Qwen3-8B @ `b968826`, chat template with thinking off; the cue is appended after the empty think block. 30 problems (the first 30 of the screen split), 8 rollouts, 4k tokens.
+
+| cue | pass@1 | cap rate | mean tokens |
+|---|---|---|---|
+| ` Alright,` | 0.887 | 7.1% | 1,205 |
+| no cue | 0.879 | 1.7% | 880 |
+| ` To determine` | 0.879 | 0.4% | 878 |
+| ` \n\nOkay` | 0.871 | 7.1% | 1,298 |
+| ` Okay,` | 0.846 | 11.3% | 1,480 |
+
+- **Comparisons:** ` Alright,` − no cue is +0.8 [−4.2, +5.8] points. Every comparison's CI includes 0.
+- **What it suggests:** on the post-trained model, ` Alright,` shows no large benefit and no sign of harm. The conversational cues lengthen answers and raise cap rates, ` Okay,` most of all.
+- **Why there's no conclusion:** the pre-set rule called for a confirm stage (132 fresh problems), but the user chose to stop at the pilot. Treat this as a pilot only: 30 problems, CIs of about ±5 points.
+
 ## Cost
-$3.43: stage 1 $0.17, screen $2.03, confirm $1.23 (including $0.05 that settled after deletion).
+$3.67: stage 1 $0.17, screen $2.03, confirm $1.23 (including $0.05 that settled after deletion), exploratory post-trained pilot $0.24.
