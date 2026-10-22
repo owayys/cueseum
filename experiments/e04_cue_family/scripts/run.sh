@@ -17,3 +17,12 @@ for m in qwen0.6b qwen1.7b qwen8b; do
     --top-p "$(cfg top_p)" --seed "$(cfg seed)" --gpu-memory-utilization "$(cfg gpu_memory_utilization)" \
     --benchmark ../data/screen.jsonl --out "$R/screen"
 done
+python build_confirm_cues.py
+for m in qwen0.6b qwen1.7b qwen8b; do
+  [ -f "../data/confirm_cues_$m.json" ] || continue
+  ./logged.sh confirm "eval_$m" python -m cues eval --model "$(cfg models/$m/hub)" --revision "$(cfg models/$m/revision)" \
+    --family "$(cfg family)" --label "$m" --prompt "$(cfg prompt)" --cues --cues-file "../data/confirm_cues_$m.json" \
+    --n-rollouts "$(cfg n_rollouts)" --max-new-tokens "$(cfg max_new_tokens)" --temperature "$(cfg temperature)" \
+    --top-p "$(cfg top_p)" --seed "$(cfg seed)" --gpu-memory-utilization "$(cfg gpu_memory_utilization)" \
+    --benchmark ../data/confirm.jsonl --out "$R/confirm"
+done
