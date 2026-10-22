@@ -19,6 +19,6 @@ On Qwen3-0.6B, 1.7B and 8B Base (plus the 4B from e03), Qwen3-14B's cue ` Alrigh
 - each size's own reasoning opener ` Okay,`;
 - probability-matched openers.
 
-The narrowest margin was 0.6B vs ` Okay,` on 350 confirm problems: +2.2 [+0.2, +4.3]. The margin over the closest control grows with size (+2 → +11 → +10 at 4B → +15). Descriptively, the cue helps more at larger sizes (0.6B 0.28 → 0.43; 8B 0.51 → 0.78) even though the larger models are far less likely to write it (first-token rank 4 at 0.6B, 120 at 8B). How natural a cue is to a model doesn't predict its benefit.
+The narrowest margin was 0.6B vs ` Okay,` on 350 confirm problems: +2.2 [+0.2, +4.3]. The margin over the closest control grows with size (+2 → +11 → +10 at 4B → +15). Descriptively, the cue helps more at larger sizes (0.6B 0.28 → 0.43; 8B 0.51 → 0.78) even though, within 0.6B–8B, the larger models are far less likely to write it (first-token rank 4 at 0.6B, 120 at 8B). The trend doesn't extend to the 14B, which is much more likely to write it (rank 7; e02), so the opening probability is U-shaped across the family. Within the tested sizes, how natural the cue is to a model doesn't predict its benefit.
 
 Limits: screen evidence for most controls, a 4k budget, math only, no 14B. Cost: $3.43. [Report](../experiments/e04_cue_family/REPORT.md).
