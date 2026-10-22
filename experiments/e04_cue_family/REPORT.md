@@ -16,7 +16,7 @@ The narrowest margin is at 0.6B vs ` Okay,`: +2.2 points, with a Holm lower boun
   - **C:** every size's post-trained model opened 400/400 reasoning traces with "Okay,".
   - **D:** seeded draws from tokens within 0.5–2× of ` Alright`'s first-token probability for that size.
 - **Confirm stage:** run where the screen forwarded controls. The 0.6B forwarded ` Okay,` and ` \n\nOkay`; the 1.7B forwarded ` \n\nOkay`.
-- **Cost:** $3.38, attended, one pod per stage.
+- **Cost:** $3.43, attended, one pod per stage.
 
 ## Results
 **Screen pass@1** (100 problems; the 4B row is e03's):
@@ -69,4 +69,4 @@ Full tables are in `results/summary_<size>.json`.
 - Mechanism: why "Alright," helps more than "Okay," in base models.
 
 ## Cost
-$3.38: stage 1 $0.17, screen $2.03, confirm $1.18.
+$3.43: stage 1 $0.17, screen $2.03, confirm $1.23 (including $0.05 that settled after deletion).

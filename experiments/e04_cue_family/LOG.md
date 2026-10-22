@@ -47,4 +47,4 @@
 ## Stage 4: analysis (2026-10-22, local)
 - `final.py` per size: Holm within size across the 6 B–D controls, using confirm data for forwarded controls and screen data otherwise. It writes `results/summary_<size>.json` and `results/scores_{screen,confirm}_<size>.parquet`.
 - **Decision for every size: row 1, specific to ` Alright,`.** The tightest margin is the 0.6B vs ` Okay,`, at +0.022 with Holm CI [+0.002, +0.043]. That's barely above zero.
-- **e04 total spend: $3.38** (balance $39.75 → $36.37), under the $5 cap.
+- **e04 total spend: $3.43** (balance $39.75 → $36.32 after the last pod's billing settled; $3.38 at deletion), under the $5 cap.
