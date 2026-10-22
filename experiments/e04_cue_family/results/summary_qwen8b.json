@@ -1,0 +1,147 @@
+{
+ "model": "qwen8b",
+ "decision": [
+  "specific to ' Alright,': above every control in B, C and D"
+ ],
+ "forwarded": [],
+ "tests": {
+  " \n\nOkay": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.14875,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.9916666666666667,
+   "lo": 0.080828125,
+   "hi": 0.21375,
+   "below": true
+  },
+  " \n\n": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.2625,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.99,
+   "lo": 0.1825,
+   "hi": 0.345,
+   "below": true
+  },
+  " Okay,": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.16875,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.9875,
+   "lo": 0.11,
+   "hi": 0.2275,
+   "below": true
+  },
+  " Below": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.33875,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.9833333333333333,
+   "lo": 0.2625,
+   "hi": 0.415,
+   "below": true
+  },
+  " Half": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.465,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.975,
+   "lo": 0.39375,
+   "hi": 0.53625,
+   "below": true
+  },
+  " Re": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.365,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.95,
+   "lo": 0.2975,
+   "hi": 0.4325,
+   "below": true
+  }
+ },
+ "per_cue_screen": {
+  "none": {
+   "screen_pass1": 0.505,
+   "lo": 0.4325,
+   "hi": 0.5750312499999995
+  },
+  " \n\n": {
+   "screen_pass1": 0.5125,
+   "lo": 0.44,
+   "hi": 0.58625
+  },
+  " \n\nOkay": {
+   "screen_pass1": 0.62625,
+   "lo": 0.55375,
+   "hi": 0.6975
+  },
+  " Alright,": {
+   "screen_pass1": 0.775,
+   "lo": 0.7075,
+   "hi": 0.83625
+  },
+  " Below": {
+   "screen_pass1": 0.43625,
+   "lo": 0.36871875000000004,
+   "hi": 0.505
+  },
+  " Half": {
+   "screen_pass1": 0.31,
+   "lo": 0.255,
+   "hi": 0.365
+  },
+  " Okay,": {
+   "screen_pass1": 0.60625,
+   "lo": 0.53875,
+   "hi": 0.6725
+  },
+  " Re": {
+   "screen_pass1": 0.41,
+   "lo": 0.3375,
+   "hi": 0.4825
+  },
+  " The": {
+   "screen_pass1": 0.46875,
+   "lo": 0.395,
+   "hi": 0.5425
+  },
+  " To": {
+   "screen_pass1": 0.59375,
+   "lo": 0.51625,
+   "hi": 0.6675
+  },
+  " To determine": {
+   "screen_pass1": 0.69,
+   "lo": 0.61625,
+   "hi": 0.7600312499999996
+  },
+  " We": {
+   "screen_pass1": 0.46125,
+   "lo": 0.38625,
+   "hi": 0.5375
+  }
+ },
+ "provenance": {
+  "cueseum_commit": "e3b8b695a5b82d9291634470f85d10dd88c58da3",
+  "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89",
+  "model": "Qwen/Qwen3-8B-Base",
+  "revision": "49e3418fbbbca6ecbdf9608b4d22e5a407081db4",
+  "prompt": "boxed",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "max_new_tokens": 4096,
+  "n_rollouts": 8,
+  "sampling_seed": 20260819,
+  "bootstrap": 10000,
+  "bootstrap_seed": 0,
+  "alpha": 0.05,
+  "correction": "Holm within size"
+ }
+}

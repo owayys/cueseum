@@ -1,0 +1,149 @@
+{
+ "model": "qwen1.7b",
+ "decision": [
+  "specific to ' Alright,': above every control in B, C and D"
+ ],
+ "forwarded": [
+  " \n\nOkay"
+ ],
+ "tests": {
+  " \n\nOkay": {
+   "data": "confirm",
+   "n": 350,
+   "diff": 0.11178571428571428,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.9916666666666667,
+   "lo": 0.08,
+   "hi": 0.14392857142857143,
+   "below": true
+  },
+  " \n\n": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.15,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.99,
+   "lo": 0.085,
+   "hi": 0.22,
+   "below": true
+  },
+  " Okay,": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.11,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.9875,
+   "lo": 0.05875,
+   "hi": 0.1625,
+   "below": true
+  },
+  " When": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.3325,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.9833333333333333,
+   "lo": 0.245,
+   "hi": 0.4175,
+   "below": true
+  },
+  " Consider": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.2525,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.975,
+   "lo": 0.18,
+   "hi": 0.32375,
+   "below": true
+  },
+  " A": {
+   "data": "screen",
+   "n": 100,
+   "diff": 0.315,
+   "p": 9.999000099990002e-05,
+   "holm_level": 0.95,
+   "lo": 0.25375,
+   "hi": 0.37625,
+   "below": true
+  }
+ },
+ "per_cue_screen": {
+  "none": {
+   "screen_pass1": 0.43375,
+   "lo": 0.36375,
+   "hi": 0.5025
+  },
+  " \n\n": {
+   "screen_pass1": 0.45625,
+   "lo": 0.3825,
+   "hi": 0.5275
+  },
+  " \n\nOkay": {
+   "screen_pass1": 0.51875,
+   "lo": 0.445,
+   "hi": 0.59
+  },
+  " A": {
+   "screen_pass1": 0.29125,
+   "lo": 0.23125,
+   "hi": 0.3525
+  },
+  " Alright,": {
+   "screen_pass1": 0.60625,
+   "lo": 0.5225,
+   "hi": 0.685
+  },
+  " Consider": {
+   "screen_pass1": 0.35375,
+   "lo": 0.285,
+   "hi": 0.425
+  },
+  " Let": {
+   "screen_pass1": 0.4325,
+   "lo": 0.35875,
+   "hi": 0.5075
+  },
+  " Okay,": {
+   "screen_pass1": 0.49625,
+   "lo": 0.4225,
+   "hi": 0.5675
+  },
+  " To": {
+   "screen_pass1": 0.5275,
+   "lo": 0.45,
+   "hi": 0.60375
+  },
+  " To determine": {
+   "screen_pass1": 0.57875,
+   "lo": 0.49625,
+   "hi": 0.66
+  },
+  " To find": {
+   "screen_pass1": 0.47875,
+   "lo": 0.4,
+   "hi": 0.55625
+  },
+  " When": {
+   "screen_pass1": 0.27375,
+   "lo": 0.2125,
+   "hi": 0.3375
+  }
+ },
+ "provenance": {
+  "cueseum_commit": "e3b8b695a5b82d9291634470f85d10dd88c58da3",
+  "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89",
+  "model": "Qwen/Qwen3-1.7B-Base",
+  "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+  "prompt": "boxed",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "max_new_tokens": 4096,
+  "n_rollouts": 8,
+  "sampling_seed": 20260819,
+  "bootstrap": 10000,
+  "bootstrap_seed": 0,
+  "alpha": 0.05,
+  "correction": "Holm within size"
+ }
+}

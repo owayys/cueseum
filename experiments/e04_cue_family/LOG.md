@@ -35,3 +35,16 @@
 - Per-size tables are in `results/screen_<size>.json`.
 - **Descriptive:** ` Alright,`'s pass@1 rises with size (0.43 → 0.61 → 0.74 (4B, e03) → 0.78), while its opening probability falls (0.070 → 0.0057 → 0.0019 → 0.0003).
 - **The user approved the confirm stage** for the 0.6B and 1.7B (projected about $1.50, total about $3.70, under the $5 cap).
+
+## Stage 3: confirm (2026-10-22, 11:08–13:11Z)
+- `analysis/final.py` was tested before any GPU spend on synthetic confirm data: a planted tie came out "NOT below", forwarded controls were judged on confirm data and the rest on screen data, and the 8B (nothing forwarded) path worked.
+- `stage3.sh` = `run.sh`'s header, `cfg` and confirm section, built with an `awk` filter verified locally (no stage-1 or screen lines, valid syntax) and uploaded as-is.
+- Pod `y8i9ifjb78wzog`: 1× A40, $0.59/hr. Attended. Setup rc=0 (snapshot `env/20261022T111247Z/`). Confirm evals with explicit `--revision`: 0.6B 11:14–12:30 (3 cells × 350 problems), 1.7B 12:30–13:10 (2 cells), both rc=0. Pulled, checksum-verified, pod deleted (`not_found`, 0 pods).
+- Confirm pass@1:
+  - 0.6B: ` Alright,` 0.444, ` Okay,` 0.421, ` \n\nOkay` 0.388;
+  - 1.7B: ` Alright,` 0.658, ` \n\nOkay` 0.546.
+
+## Stage 4: analysis (2026-10-22, local)
+- `final.py` per size: Holm within size across the 6 B–D controls, using confirm data for forwarded controls and screen data otherwise. It writes `results/summary_<size>.json` and `results/scores_{screen,confirm}_<size>.parquet`.
+- **Decision for every size: row 1, specific to ` Alright,`.** The tightest margin is the 0.6B vs ` Okay,`, at +0.022 with Holm CI [+0.002, +0.043]. That's barely above zero.
+- **e04 total spend: $3.38** (balance $39.75 → $36.37), under the $5 cap.
