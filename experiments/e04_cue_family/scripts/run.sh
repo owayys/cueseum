@@ -26,3 +26,8 @@ for m in qwen0.6b qwen1.7b qwen8b; do
     --top-p "$(cfg top_p)" --seed "$(cfg seed)" --gpu-memory-utilization "$(cfg gpu_memory_utilization)" \
     --benchmark ../data/confirm.jsonl --out "$R/confirm"
 done
+P=exploratory_post_trained
+./logged.sh "$P" pilot python -m cues eval --model "$(cfg $P/model/hub)" --revision "$(cfg $P/model/revision)" --family "$(cfg family)" \
+  --label "$(cfg $P/label)" --chat --no-think --prompt "$(cfg $P/prompt)" --cues none --cues-file ../data/eval_cues_post_trained.json \
+  --n-rollouts "$(cfg n_rollouts)" --max-new-tokens "$(cfg max_new_tokens)" --temperature "$(cfg temperature)" --top-p "$(cfg top_p)" \
+  --seed "$(cfg seed)" --gpu-memory-utilization "$(cfg gpu_memory_utilization)" --benchmark ../data/pilot_post_trained.jsonl --out "$R/$P/pilot"

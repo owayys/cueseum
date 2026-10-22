@@ -51,3 +51,18 @@
 
 ## Correction (2026-10-22)
 - The user noted that REPORT and findings overstated "the models become less likely to write the cue with size". That holds only within the tested 0.6B–8B. The 14B is much more likely to write it (0.040, rank 7; e02), consistent with its own beam search selecting it. Wording now scoped to 0.6B–8B, with the U-shape noted.
+
+## Exploratory: post-trained Qwen3-8B, thinking off (rules fixed 2026-10-22, before any data)
+- **At the user's request** after e04's main analysis, so it is **not pre-registered** with e04 and is reported under REPORT "Exploratory". The user expects possibly sizeable, even negative (adversarial), effects, so every test is two-sided.
+- **Model and prompt:** Qwen/Qwen3-8B (post-trained) @ `b968826`, chat template, thinking off (`--chat --no-think --prompt chat`). The cue is appended after the rendered template, i.e. after the empty think block.
+- **Sampling and cues:** 8 rollouts, 4,096 tokens, temperature 0.6, top-p 0.95, seed 20260819. Cues: no cue, ` Alright,`, ` Okay,`, ` \n\nOkay`, ` To determine`.
+- **Pilot:** the first 30 problems of `data/screen.jsonl`.
+- **Comparisons:** ` Alright,` − X for X ∈ {no cue, ` Okay,`, ` \n\nOkay`, ` To determine`}, per problem, with a 10,000-resample bootstrap (seed 0) 95% CI.
+- **Rule after the pilot:**
+  - **stop** (no confirm) if every |difference| < 0.02 **and** every CI lies within ±0.06;
+  - **otherwise** confirm all 4 comparisons on **fresh** problems from `data/confirm.jsonl` (first n):
+    - g = the smallest pilot |difference| that is ≥ 0.05, or 0.05 if none is;
+    - sd = the largest pilot SD of per-problem differences;
+    - n = ⌈((z₁₋₀.₀₅/₍₂·₄₎ + z₀.₈) · sd / g)²⌉, capped at 350.
+  - Only confirm data count toward conclusions. The pilot is reported as the pilot.
+- **Budget:** if the projected e04 total including a confirm would exceed $5, stop and ask the user first.
