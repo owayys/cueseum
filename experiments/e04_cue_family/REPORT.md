@@ -49,9 +49,12 @@ Full tables are in `results/summary_<size>.json`.
   probability-matched controls, and in the screen it beats the 4B's registered ` To determine` by 2–9 points (outside the test family).
 - **Specificity grows with size.** Its margin over the closest control widens from +2 points at 0.6B to +11 at 1.7B and +15 at 8B
   (+10 at the 4B in e03).
-- **Its absolute benefit grows while the models become less likely to write it** (descriptive, four sizes). The 8B almost never
-  starts with "Alright" (rank 120) yet gains the most (0.505 → 0.775). Its no-cue baseline barely moves from the 4B (0.500 → 0.505).
-  So how *natural* a cue is to a model does not predict how much it helps.
+- **Within 0.6B–8B, its absolute benefit grows while the models become less likely to write it** (descriptive, four sizes). The 8B
+  almost never starts with "Alright" (rank 120) yet gains the most (0.505 → 0.775). Its no-cue baseline barely moves from the 4B
+  (0.500 → 0.505). Across these four sizes, how *natural* the cue is to a model does not predict how much it helps.
+- **This is not a monotonic family-wide trend.** The opening probability is U-shaped across the family: the 14B (not tested
+  here) is far *more* likely to write ` Alright,` than the 8B (0.040 vs 0.0003, median first-token rank 7; e02 exploratory
+  scaling). That is consistent with its own beam search selecting it. Whether the 14B's benefit fits the pattern is untested.
 - **What's tested:** what differs between "Alright," and "Okay," is not tested. Every reasoning-trained Qwen3 size uses "Okay,".
 
 ## Limitations

@@ -33,7 +33,7 @@
 | 8B | 0.505 | 0.775 | 0.690 | none |
 
 - Per-size tables are in `results/screen_<size>.json`.
-- **Descriptive:** ` Alright,`'s pass@1 rises with size (0.43 → 0.61 → 0.74 (4B, e03) → 0.78), while its opening probability falls (0.070 → 0.0057 → 0.0019 → 0.0003).
+- **Descriptive:** ` Alright,`'s pass@1 rises with size (0.43 → 0.61 → 0.74 (4B, e03) → 0.78), while its opening probability falls (0.070 → 0.0057 → 0.0019 → 0.0003). This holds within 0.6B–8B only: the 14B, not tested here, has 0.040 (e02), so the probability is U-shaped across the family.
 - **The user approved the confirm stage** for the 0.6B and 1.7B (projected about $1.50, total about $3.70, under the $5 cap).
 
 ## Stage 3: confirm (2026-10-22, 11:08–13:11Z)
@@ -48,3 +48,6 @@
 - `final.py` per size: Holm within size across the 6 B–D controls, using confirm data for forwarded controls and screen data otherwise. It writes `results/summary_<size>.json` and `results/scores_{screen,confirm}_<size>.parquet`.
 - **Decision for every size: row 1, specific to ` Alright,`.** The tightest margin is the 0.6B vs ` Okay,`, at +0.022 with Holm CI [+0.002, +0.043]. That's barely above zero.
 - **e04 total spend: $3.43** (balance $39.75 → $36.32 after the last pod's billing settled; $3.38 at deletion), under the $5 cap.
+
+## Correction (2026-10-22)
+- The user noted that REPORT and findings overstated "the models become less likely to write the cue with size". That holds only within the tested 0.6B–8B. The 14B is much more likely to write it (0.040, rank 7; e02), consistent with its own beam search selecting it. Wording now scoped to 0.6B–8B, with the U-shape noted.
