@@ -40,3 +40,14 @@ bootstrap: 10000
 alpha: 0.05
 budget_usd: 5
 gpu_hour_cap: 10
+exploratory_post_trained:
+  model: {hub: Qwen/Qwen3-8B, revision: b968826d9c46dd6066d109eabc6255188de91218}
+  label: qwen8b_post
+  prompt: chat
+  chat: true
+  no_think: true
+  cues: [" Alright,", " Okay,", " \n\nOkay", " To determine"]
+  pilot_problems: 30
+  comparisons: 4
+  stop_if: {max_abs_diff: 0.02, ci_within: 0.06}
+  confirm: {min_gap: 0.05, power: 0.8, cap: 350}
