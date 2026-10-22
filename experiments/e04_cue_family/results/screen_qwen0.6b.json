@@ -1,0 +1,151 @@
+{
+ "model": "qwen0.6b",
+ "problems": 100,
+ "target_acc": 0.43,
+ "no_cue_acc": 0.28125,
+ "controls": {
+  " \n\nOkay": {
+   "group": "B_other_model_cues",
+   "acc": 0.36625,
+   "diff": 0.06375,
+   "lo": 0.025,
+   "hi": 0.1025,
+   "in_family": true,
+   "forward": true
+  },
+  " \n\n": {
+   "group": "B_other_model_cues",
+   "acc": 0.29375,
+   "diff": 0.13625,
+   "lo": 0.09375,
+   "hi": 0.18125,
+   "in_family": true,
+   "forward": false
+  },
+  " Okay,": {
+   "group": "C_reasoning_style",
+   "acc": 0.4175,
+   "diff": 0.0125,
+   "lo": -0.02125,
+   "hi": 0.04625,
+   "in_family": true,
+   "forward": true
+  },
+  " Since": {
+   "group": "D_probability_matched",
+   "acc": 0.19875,
+   "diff": 0.23125,
+   "lo": 0.175,
+   "hi": 0.28875,
+   "in_family": true,
+   "forward": false
+  },
+  " We": {
+   "group": "D_probability_matched",
+   "acc": 0.23625,
+   "diff": 0.19375,
+   "lo": 0.14125,
+   "hi": 0.2475,
+   "in_family": true,
+   "forward": false
+  },
+  " The": {
+   "group": "D_probability_matched",
+   "acc": 0.22625,
+   "diff": 0.20375,
+   "lo": 0.15375,
+   "hi": 0.25625,
+   "in_family": true,
+   "forward": false
+  },
+  " To determine": {
+   "group": "E_reference",
+   "acc": 0.4075,
+   "diff": 0.0225,
+   "lo": -0.01875,
+   "hi": 0.065,
+   "in_family": false,
+   "forward": false
+  },
+  " To": {
+   "group": "E_reference",
+   "acc": 0.41,
+   "diff": 0.02,
+   "lo": -0.0225,
+   "hi": 0.0625,
+   "in_family": false,
+   "forward": false
+  }
+ },
+ "forwarded": [
+  " \n\nOkay",
+  " Okay,"
+ ],
+ "per_cue": {
+  " \n\n": {
+   "cap_rate": 0.13875,
+   "mean_tokens": 985.15125,
+   "no_answer": 0.18500000000000005
+  },
+  " \n\nOkay": {
+   "cap_rate": 0.195,
+   "mean_tokens": 1381.7775,
+   "no_answer": 0.23124999999999996
+  },
+  " Alright,": {
+   "cap_rate": 0.305,
+   "mean_tokens": 2096.50625,
+   "no_answer": 0.27875000000000005
+  },
+  " Okay,": {
+   "cap_rate": 0.1725,
+   "mean_tokens": 1327.575,
+   "no_answer": 0.2025
+  },
+  " Since": {
+   "cap_rate": 0.1175,
+   "mean_tokens": 728.70125,
+   "no_answer": 0.17374999999999996
+  },
+  " The": {
+   "cap_rate": 0.1075,
+   "mean_tokens": 748.395,
+   "no_answer": 0.1725
+  },
+  " To": {
+   "cap_rate": 0.085,
+   "mean_tokens": 900.75375,
+   "no_answer": 0.09125000000000005
+  },
+  " To determine": {
+   "cap_rate": 0.09,
+   "mean_tokens": 941.16875,
+   "no_answer": 0.09250000000000003
+  },
+  " We": {
+   "cap_rate": 0.11,
+   "mean_tokens": 762.025,
+   "no_answer": 0.16000000000000003
+  },
+  "none": {
+   "cap_rate": 0.1375,
+   "mean_tokens": 989.11375,
+   "no_answer": 0.16500000000000004
+  }
+ },
+ "provenance": {
+  "cueseum_commit": "c5fff871dc85c280f6d612541001db1fc120631a",
+  "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89",
+  "model": "Qwen/Qwen3-0.6B-Base",
+  "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd",
+  "prompt": "boxed",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "max_new_tokens": 4096,
+  "n_rollouts": 8,
+  "seed": 20260819,
+  "bootstrap": 10000,
+  "bootstrap_seed": 0,
+  "forward_rule": "lo < 0.05"
+ }
+}

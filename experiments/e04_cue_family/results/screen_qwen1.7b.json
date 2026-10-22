@@ -1,0 +1,178 @@
+{
+ "model": "qwen1.7b",
+ "problems": 100,
+ "target_acc": 0.60625,
+ "no_cue_acc": 0.43375,
+ "controls": {
+  " \n\nOkay": {
+   "group": "B_other_model_cues",
+   "acc": 0.51875,
+   "diff": 0.0875,
+   "lo": 0.0425,
+   "hi": 0.13,
+   "in_family": true,
+   "forward": true
+  },
+  " \n\n": {
+   "group": "B_other_model_cues",
+   "acc": 0.45625,
+   "diff": 0.15,
+   "lo": 0.09875,
+   "hi": 0.2025,
+   "in_family": true,
+   "forward": false
+  },
+  " Okay,": {
+   "group": "C_reasoning_style",
+   "acc": 0.49625,
+   "diff": 0.11,
+   "lo": 0.07,
+   "hi": 0.15125,
+   "in_family": true,
+   "forward": false
+  },
+  " When": {
+   "group": "D_probability_matched",
+   "acc": 0.27375,
+   "diff": 0.3325,
+   "lo": 0.2625,
+   "hi": 0.4025,
+   "in_family": true,
+   "forward": false
+  },
+  " Consider": {
+   "group": "D_probability_matched",
+   "acc": 0.35375,
+   "diff": 0.2525,
+   "lo": 0.18875,
+   "hi": 0.315,
+   "in_family": true,
+   "forward": false
+  },
+  " A": {
+   "group": "D_probability_matched",
+   "acc": 0.29125,
+   "diff": 0.315,
+   "lo": 0.25375,
+   "hi": 0.37625,
+   "in_family": true,
+   "forward": false
+  },
+  " To determine": {
+   "group": "E_reference",
+   "acc": 0.57875,
+   "diff": 0.0275,
+   "lo": -0.015,
+   "hi": 0.07125,
+   "in_family": false,
+   "forward": false
+  },
+  " To": {
+   "group": "E_reference",
+   "acc": 0.5275,
+   "diff": 0.07875,
+   "lo": 0.03,
+   "hi": 0.1275,
+   "in_family": false,
+   "forward": false
+  },
+  " Let": {
+   "group": "E_beam_proposals",
+   "acc": 0.4325,
+   "diff": 0.17375,
+   "lo": 0.11875,
+   "hi": 0.23,
+   "in_family": false,
+   "forward": false
+  },
+  " To find": {
+   "group": "E_beam_proposals",
+   "acc": 0.47875,
+   "diff": 0.1275,
+   "lo": 0.07375,
+   "hi": 0.18375,
+   "in_family": false,
+   "forward": false
+  }
+ },
+ "forwarded": [
+  " \n\nOkay"
+ ],
+ "per_cue": {
+  " \n\n": {
+   "cap_rate": 0.06375,
+   "mean_tokens": 781.59125,
+   "no_answer": 0.15749999999999997
+  },
+  " \n\nOkay": {
+   "cap_rate": 0.11,
+   "mean_tokens": 1167.69875,
+   "no_answer": 0.19125000000000003
+  },
+  " A": {
+   "cap_rate": 0.08625,
+   "mean_tokens": 721.425,
+   "no_answer": 0.21999999999999997
+  },
+  " Alright,": {
+   "cap_rate": 0.2125,
+   "mean_tokens": 1865.0425,
+   "no_answer": 0.21250000000000002
+  },
+  " Consider": {
+   "cap_rate": 0.075,
+   "mean_tokens": 668.1975,
+   "no_answer": 0.2025
+  },
+  " Let": {
+   "cap_rate": 0.0575,
+   "mean_tokens": 688.9475,
+   "no_answer": 0.11375000000000002
+  },
+  " Okay,": {
+   "cap_rate": 0.1375,
+   "mean_tokens": 1259.085,
+   "no_answer": 0.235
+  },
+  " To": {
+   "cap_rate": 0.06875,
+   "mean_tokens": 851.12125,
+   "no_answer": 0.13749999999999996
+  },
+  " To determine": {
+   "cap_rate": 0.055,
+   "mean_tokens": 818.92625,
+   "no_answer": 0.07125000000000004
+  },
+  " To find": {
+   "cap_rate": 0.06625,
+   "mean_tokens": 793.1125,
+   "no_answer": 0.19125000000000003
+  },
+  " When": {
+   "cap_rate": 0.10625,
+   "mean_tokens": 728.7625,
+   "no_answer": 0.25625
+  },
+  "none": {
+   "cap_rate": 0.075,
+   "mean_tokens": 782.755,
+   "no_answer": 0.15249999999999997
+  }
+ },
+ "provenance": {
+  "cueseum_commit": "c5fff871dc85c280f6d612541001db1fc120631a",
+  "upstream_commit": "339de4922c063d2b33271f999a28042183bb0e89",
+  "model": "Qwen/Qwen3-1.7B-Base",
+  "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+  "prompt": "boxed",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "max_new_tokens": 4096,
+  "n_rollouts": 8,
+  "seed": 20260819,
+  "bootstrap": 10000,
+  "bootstrap_seed": 0,
+  "forward_rule": "lo < 0.05"
+ }
+}
